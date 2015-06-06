@@ -41,7 +41,11 @@ public class CarSensorCriticalValueService {
         if (model.getId() != null) {
             carSensorCriticalValue = carSensorCriticalValueRepository.findOne(model.getId());
         } else {
-            carSensorCriticalValue = new CarSensorCriticalValue();
+            if(model.getCriticalValue()!=null && model.getCriticalValue().trim().length()>0){
+                carSensorCriticalValue = new CarSensorCriticalValue();
+            }else{
+                return;
+            }
         }
 
         if (carSensorCriticalValue == null) {
@@ -72,7 +76,7 @@ public class CarSensorCriticalValueService {
         List<Sensor> sensorList = sensorRepository.findAll();
         for (Sensor sensor : sensorList) {
             if (results.get(sensor.getId()) == null) {
-                results.put(sensor.getId(), new CarSensorCriticalValueModel(sensor.getId(), carId));
+                results.put(sensor.getId(), new CarSensorCriticalValueModel(sensor ,carId));
             }
         }
 

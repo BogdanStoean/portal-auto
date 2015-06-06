@@ -12,6 +12,7 @@ public class Sensor extends AbstractEntity<User>{
     private Long id;
 
     private String name;
+
     private String type;
     private String alertMessage;
 
