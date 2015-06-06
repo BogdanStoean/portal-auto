@@ -1,0 +1,3 @@
+#execute potgresql initial database and user creation from inside sql directory
+
+sudo -upostgres psql -f database.sql
