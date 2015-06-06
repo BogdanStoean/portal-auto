@@ -19,7 +19,6 @@ insert into sensor (sensor_id, name, type,alert_message) VALUES (14,'faruri','St
 insert into sensor (sensor_id, name, type,alert_message) VALUES (15,'parcare','Status','Senzorii de faruri au probleme');
 insert into sensor (sensor_id, name, type,alert_message) VALUES (16,'KM','Number','Meh?!?');
 
-
 insert into car(car_id,active, deviceuuid, name, user_id) VALUES (1,TRUE ,'384e83d526570a43' ,'lucian',3);
 
 INSERT INTO car(
@@ -33,6 +32,38 @@ INSERT INTO car(
   name, user_id)
 VALUES (3, now(), now(), true, '112',
         'Ford KA', 3);
+
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (1,1,2,'10');
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (2,1,3,'30');
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (3,1,4,'25');
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (4,1,5,'30');
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (5,1,6,'20');
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (6,1,7,'30');
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (7,1,8,'20');
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (8,1,9,'ALERT');
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (9,1,10,'ALERT');
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (10,1,11,'ALERT');
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (11,1,12,'ALERT');
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (12,1,13,'ALERT');
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (13,1,14,'ALERT');
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (14,1,15,'ALERT');
+insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
+VALUES (15,1,16,'150000');
+
 
 ALTER SEQUENCE user_id_seq RESTART WITH 100;
 ALTER SEQUENCE sensor_id_seq RESTART WITH 100;
