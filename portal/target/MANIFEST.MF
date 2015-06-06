@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Implementation-Title: Portal Auto
-Implementation-Version: 1.0-SNAPSHOT
-Implementation-Vendor-Id: ro.rocknrolla.portal_auto
-Build-Jdk: 1.8.0_25
-Built-By: lucian
-Created-By: IntelliJ IDEA
-Main-Class: ro.rocknrolla.portal_auto.Application
-
