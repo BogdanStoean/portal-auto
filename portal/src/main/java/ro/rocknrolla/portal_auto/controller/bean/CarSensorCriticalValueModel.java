@@ -15,6 +15,10 @@ public class CarSensorCriticalValueModel {
 
     private String criticalValue;
 
+    public CarSensorCriticalValueModel() {
+
+    }
+
     public CarSensorCriticalValueModel(CarSensorCriticalValue carSensorCriticalValue) {
         this.id = carSensorCriticalValue.getId();
         this.carId = carSensorCriticalValue.getCar().getId();
@@ -27,8 +31,6 @@ public class CarSensorCriticalValueModel {
         this.carId = carId;
     }
 
-    public CarSensorCriticalValueModel() {
-    }
 
     public Long getId() {
         return id;

@@ -3,15 +3,18 @@ package ro.rocknrolla.portal_auto.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ro.rocknrolla.portal_auto.controller.bean.CarSensorCriticalValueModel;
 import ro.rocknrolla.portal_auto.entities.CarSensorCriticalValue;
 import ro.rocknrolla.portal_auto.entities.Sensor;
 import ro.rocknrolla.portal_auto.exception.ServerEntityNotFoundException;
 import ro.rocknrolla.portal_auto.repositories.CarRepository;
 import ro.rocknrolla.portal_auto.repositories.CarSensorCriticalValueRepository;
 import ro.rocknrolla.portal_auto.repositories.SensorRepository;
-import ro.rocknrolla.portal_auto.controller.bean.CarSensorCriticalValueModel;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Bogdan Stoean on 6/6/15.
@@ -41,8 +44,8 @@ public class CarSensorCriticalValueService {
             carSensorCriticalValue = new CarSensorCriticalValue();
         }
 
-        if(carSensorCriticalValue == null){
-            throw new ServerEntityNotFoundException("id","entity.not.found");
+        if (carSensorCriticalValue == null) {
+            throw new ServerEntityNotFoundException("id", "entity.not.found");
         }
 
         carSensorCriticalValue.setCar(carRepository.findOne(model.getCarId()));
@@ -68,11 +71,11 @@ public class CarSensorCriticalValueService {
 
         List<Sensor> sensorList = sensorRepository.findAll();
         for (Sensor sensor : sensorList) {
-            if(results.get(sensor.getId())== null){
+            if (results.get(sensor.getId()) == null) {
                 results.put(sensor.getId(), new CarSensorCriticalValueModel(sensor.getId(), carId));
             }
         }
 
-        return (List) results.values();
+        return new ArrayList<>(results.values());
     }
 }
