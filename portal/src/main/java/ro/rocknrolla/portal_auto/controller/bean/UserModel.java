@@ -1,4 +1,4 @@
-package ro.rocknrolla.portal_auto.signup.bean;
+package ro.rocknrolla.portal_auto.controller.bean;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;

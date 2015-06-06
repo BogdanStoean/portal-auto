@@ -1,4 +1,4 @@
-package ro.rocknrolla.portal_auto.signup.service;
+package ro.rocknrolla.portal_auto.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,7 +8,7 @@ import ro.rocknrolla.portal_auto.exception.ServerEntityNotFoundException;
 import ro.rocknrolla.portal_auto.repositories.CarRepository;
 import ro.rocknrolla.portal_auto.repositories.CarSensorCriticalValueRepository;
 import ro.rocknrolla.portal_auto.repositories.SensorRepository;
-import ro.rocknrolla.portal_auto.signup.bean.CarSensorCriticalValueModel;
+import ro.rocknrolla.portal_auto.controller.bean.CarSensorCriticalValueModel;
 
 import java.util.List;
 

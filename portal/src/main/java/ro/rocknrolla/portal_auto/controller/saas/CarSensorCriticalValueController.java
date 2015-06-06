@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.rocknrolla.portal_auto.bean.Response;
 import ro.rocknrolla.portal_auto.entities.CarSensorCriticalValue;
-import ro.rocknrolla.portal_auto.signup.bean.CarSensorCriticalValueModel;
-import ro.rocknrolla.portal_auto.signup.service.CarSensorCriticalValueService;
+import ro.rocknrolla.portal_auto.controller.bean.CarSensorCriticalValueModel;
+import ro.rocknrolla.portal_auto.service.CarSensorCriticalValueService;
 
 import javax.validation.Valid;
 import java.util.List;

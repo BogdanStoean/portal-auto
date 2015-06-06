@@ -1,4 +1,4 @@
-package ro.rocknrolla.portal_auto.signup.service;
+package ro.rocknrolla.portal_auto.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import ro.rocknrolla.portal_auto.entities.User;
 import ro.rocknrolla.portal_auto.exception.UniqueViolationException;
 import ro.rocknrolla.portal_auto.repositories.UserRepository;
-import ro.rocknrolla.portal_auto.signup.bean.UserModel;
+import ro.rocknrolla.portal_auto.controller.bean.UserModel;
 
 import javax.transaction.Transactional;
 import java.util.Date;
