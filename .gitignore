@@ -4,6 +4,9 @@
 
 ## Directory-based project format:
 .idea/
+target/
+portal/target/
+portal-dtos/target/
 # if you remove the above rule, at least ignore the following:
 
 # User-specific stuff:
