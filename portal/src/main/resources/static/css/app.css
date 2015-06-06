@@ -53,6 +53,9 @@ body {
     border-top-right-radius: 0;
 }
 
+.ng-modal{
+    overflow-y: initial !important
+}
 
 .ng-modal-overlay {
     /* A dark translucent div that covers the whole screen */
@@ -80,6 +83,8 @@ body {
 
     background-color: #fff;
     box-shadow: 4px 4px 80px #000;
+    overflow-y: auto;
+
 }
 .ng-modal-dialog-content {
     padding:10px;

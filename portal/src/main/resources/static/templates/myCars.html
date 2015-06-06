@@ -1,5 +1,4 @@
 <h1>My Cars</h1>
-<button ng-click='toggleModal()'>Add car</button>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -49,4 +48,31 @@
 
 <modal-dialog show='editToggleModalShown' width='750px' height='90%'>
     <h1>Edit Car</h1>
+
+    <form name="formEditCar"  ng-submit="submitEditCar()" accept-charset="utf-8" class="form" role="form" novalidate>
+        <div class="form-group"
+             ng-class="{'has-error' : formAddCar.name.$invalid && (formAddCar.name.$dirty || showValidation)}">
+            <label for="nameEdit">Car name</label>
+            <input type="text" class="form-control input-lg" id="nameEdit" placeholder="Enter car name"
+                   ng-model="car.name"/>
+        </div>
+        <div class="form-group">
+            <label for="deviceUUIDEdit">Device UUID</label>
+            <input type="text" class="form-control input-lg" id="deviceUUIDEdit" placeholder="Enter device UUID"
+                   ng-model="car.deviceUUID" readonly="readonly"/>
+        </div>
+        <div class="checkbox" >
+            <label><input name="active" ng-model="car.active" type="checkbox">Active</label>
+        </div>
+
+        <h3>Sensor critical values:</h3>
+
+        <div class="form-group"  ng-repeat="sensor in sensorsList">
+            <label for="sensor_{{sensor.sensorName}}">{{sensor.sensorName}} ({{sensor.sensorType}})</label>
+            <input type="text" class="form-control input-lg" id="sensor_{{sensor.sensorName}}" placeholder="Enter value"
+                   ng-model="sensor.criticalValue"/>
+        </div>
+
+        <button type="submit" class="btn btn-default btn-primary">Submit</button>
+    </form>
 </modal-dialog>
