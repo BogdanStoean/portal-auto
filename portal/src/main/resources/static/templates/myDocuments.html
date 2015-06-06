@@ -22,23 +22,19 @@
 
     <form name="formAddDocument" ng-submit="submitDocument()" accept-charset="utf-8" class="form" role="form"
           novalidate>
-        <div class="form-group"
-             ng-class="{'has-error' : formAddDocument.name.$invalid && (formAddDocument.name.$dirty || showValidation)}">
-            <label for="name">Document name</label>
-            <input type="text" class="form-control input-lg" id="name" placeholder="Enter document name"
-                   ng-model="document.name"/>
-        </div>
+        <div class="col-md-7">
+            <div class="form-group"
+                 ng-class="{'has-error' : formAddDocument.name.$invalid && (formAddDocument.name.$dirty || showValidation)}">
+                <label for="name">Document name</label>
+                <input type="text" class="form-control input-lg" id="name" placeholder="Enter document name"
+                       ng-model="document.name"/>
+            </div>
 
-        <div class="input-group">
-            <input id="dataMaxPlata" type="text" class="form-control" datepicker-popup="dd/MM/yyyy"
-                   ng-model="document.activationDate" ng-required="true"/>
-  <span class="input-group-btn">
-  <button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i
-          class="glyphicon glyphicon-calendar"></i></button>
-  </span>
+            <button type="submit" class="btn btn-default btn-primary">Submit</button>
         </div>
+        <datepicker class="col-md-5 well well-sm" ng-model="document.activationDate" show-weeks="true"></datepicker>
 
-        <button type="submit" class="btn btn-default btn-primary">Submit</button>
+
     </form>
 </modal-dialog>
 

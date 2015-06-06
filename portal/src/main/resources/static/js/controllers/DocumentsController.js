@@ -1,4 +1,4 @@
-angular.module("portal_app")
+angular.module('portal_app')
     .controller("DocumentsController", ["$scope", "$http", function ($scope, $http) {
         $scope.documents = [];
         $scope.document = {};
