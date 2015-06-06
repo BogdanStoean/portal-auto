@@ -11,9 +11,8 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
+import com.parse.ParsePush;
 import java.util.concurrent.Callable;
-
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -21,7 +20,6 @@ import ro.rocknrolla.android.smartcar.R;
 import ro.rocknrolla.android.smartcar.SmartCar;
 import ro.rocknrolla.android.smartcar.api.ApiService;
 import ro.rocknrolla.android.smartcar.utils.StatusCar;
-import ro.rocknrolla.common.CarActualDataDTO;
 
 
 public class MainActivity extends Activity {
@@ -84,6 +82,9 @@ public class MainActivity extends Activity {
         StatusCar.getInstance().refresh(new Callable() {
             @Override
             public Object call() throws Exception {
+                // add car id to parse
+                ParsePush.subscribeInBackground("parse_"+SmartCar.android_id);
+
                 //intent the status view
                 Intent statusActiviti = new Intent(getApplicationContext(), StatusActivity.class);
                 statusActiviti.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
