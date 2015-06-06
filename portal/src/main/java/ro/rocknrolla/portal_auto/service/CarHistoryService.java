@@ -7,6 +7,7 @@ import ro.rocknrolla.common.SensorDTO;
 import ro.rocknrolla.portal_auto.entities.Car;
 import ro.rocknrolla.portal_auto.entities.CarHistory;
 import ro.rocknrolla.portal_auto.entities.Sensor;
+import ro.rocknrolla.portal_auto.repositories.CarHistoryRepository;
 import ro.rocknrolla.portal_auto.repositories.CarRepository;
 import ro.rocknrolla.portal_auto.repositories.SensorRepository;
 
@@ -23,9 +24,10 @@ public class CarHistoryService {
     @Autowired
     private SensorRepository sensorRepository;
 
+    @Autowired
+    private CarHistoryRepository carHistoryRepository;
 
     public void persistCarHistory(CarParametersDTO carParameters) {
-
         Car car = carRepository.findByDeviceUUIDAndActive(carParameters.getDeviceId(), true);
         for(SensorDTO sensorDTO: carParameters.getSensors()){
             Sensor byName = sensorRepository.findByName(sensorDTO.getName());
@@ -33,8 +35,10 @@ public class CarHistoryService {
                 continue;
             }
             CarHistory carHistory = new CarHistory();
-//            carHistory.setSensor(sensorDTO);
+            carHistory.setSensor(byName);
+            carHistory.setCar(car);
             carHistory.setValue(sensorDTO.getValue());
+            carHistoryRepository.save(carHistory);
         }
 
     }
