@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationEndpoint {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationEndpoint.class);
 
     @RequestMapping(value = "/getPrincipal/{token}", method = RequestMethod.GET)
