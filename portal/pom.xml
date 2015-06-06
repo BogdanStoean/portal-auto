@@ -8,17 +8,17 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.2.3.RELEASE</version>
     </parent>
-    <artifactId>nemetschek-broker</artifactId>
+    <artifactId>portal_auto</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <groupId>ro.esolutions.nemetschek</groupId>
+    <groupId>ro.rocknrolla.portal_auto</groupId>
     <packaging>jar</packaging>
-    <name>Nemetschek Broker</name>
-    <description>Nemetschek Broker</description>
+    <name>Portla Auto</name>
+    <description>Portal auto</description>
     <properties>
         <!-- use UTF-8 for everything -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <start-class>ro.esolutions.nemetschek.Application</start-class>
+        <start-class>ro.rocknrolla.portal_auto.Application</start-class>
         <java.version>1.8</java.version>
     </properties>
 
@@ -67,7 +67,7 @@
     </dependencies>
 
     <build>
-        <finalName>broker</finalName>
+        <finalName>portal_auto</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
