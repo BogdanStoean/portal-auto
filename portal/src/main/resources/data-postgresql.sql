@@ -22,7 +22,7 @@ insert into sensor (sensor_id, name, type) VALUES (14,'faruri','Status');
 insert into sensor (sensor_id, name, type) VALUES (15,'parcare','Status');
 
 
-insert into car(car_id,active, deviceuuid, name, user_id) VALUES (1,TRUE ,'12345' ,'lucian',3);
+insert into car(car_id,active, deviceuuid, name, user_id) VALUES (1,TRUE ,'384e83d526570a43' ,'lucian',3);
 
 INSERT INTO car(
   car_id, created_date, last_modified_date, active, deviceuuid,

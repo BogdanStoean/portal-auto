@@ -27,7 +27,7 @@ public class DataFetch {
     public ResponseEntity carInformation(@RequestBody CarParametersDTO data) {
         Car car = carRepository.findByDeviceUUIDAndActive(data.getDeviceId(), true);
         if (car == null) {
-            LOGGER.info("Someone is hitting app with an unknown device");
+            LOGGER.info("Someone is hitting app with an unknown device: " + data.getDeviceId());
             return ResponseEntity.ok("500 Bad Data");
         }
         if (!isValidData(data)) {
