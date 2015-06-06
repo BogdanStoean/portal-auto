@@ -3,6 +3,7 @@ package ro.rocknrolla.android.smartcar.utils;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -12,6 +13,7 @@ import retrofit.client.Response;
 import ro.rocknrolla.android.smartcar.SmartCar;
 import ro.rocknrolla.android.smartcar.api.ApiService;
 import ro.rocknrolla.common.CarActualDataDTO;
+import ro.rocknrolla.common.SensorActualDataComparator;
 import ro.rocknrolla.common.SensorActualDataDTO;
 
 public class StatusCar {
@@ -36,7 +38,7 @@ public class StatusCar {
             @Override
             public void success(CarActualDataDTO carActualDataDTOs, Response response) {
                 list = carActualDataDTOs.getSensorDisplayDTOs();
-
+                Collections.sort(list, new SensorActualDataComparator());
                 try {
                     callback.call();
                 } catch (Exception e) {

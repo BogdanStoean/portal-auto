@@ -3,12 +3,10 @@ package ro.rocknrolla.android.smartcar.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import java.util.List;
@@ -52,11 +50,11 @@ public class StatusListAdapter extends ArrayAdapter<SensorActualDataDTO> {
             holder.nameView.setText(entity.getName());
 
             if(entity.getStatus().equalsIgnoreCase("ok")) {
-                holder.status.setBackgroundColor(Color.GREEN);
+                holder.status.setBackgroundResource(R.color.pocket_color_1);
             } else if(entity.getStatus().equalsIgnoreCase("warning")) {
-                holder.status.setBackgroundColor(Color.YELLOW);
+                holder.status.setBackgroundResource(R.color.pocket_color_4);
             } else {
-                holder.status.setBackgroundColor(Color.RED);
+                holder.status.setBackgroundResource(R.color.pocket_color_3);
             }
         }
 

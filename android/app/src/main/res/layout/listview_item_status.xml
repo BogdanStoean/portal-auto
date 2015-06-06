@@ -13,7 +13,7 @@
 
         <RelativeLayout
             android:id="@+id/status"
-            android:layout_width="20dp"
+            android:layout_width="15dp"
             android:layout_height="fill_parent"
             android:background="@color/white"/>
 
@@ -22,11 +22,13 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:text="Title"
             android:ellipsize="end"
             android:singleLine="true"
             android:layout_marginLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             />
     </LinearLayout>
 

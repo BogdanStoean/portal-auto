@@ -48,6 +48,14 @@ public class StatusActivity extends Activity {
         mTimer.scheduleAtFixedRate(new TimeStatusTask(), 0, NOTIFY_INTERVAL);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mTimer != null) {
+            mTimer.cancel();
+        }
+    }
+
     class TimeStatusTask extends TimerTask {
 
         @Override
