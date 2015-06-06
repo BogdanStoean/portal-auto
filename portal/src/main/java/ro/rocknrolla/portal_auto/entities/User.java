@@ -1,11 +1,10 @@
 package ro.rocknrolla.portal_auto.entities;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "USERS")
-public class User {
+public class User extends AbstractEntity<User> {
 
 	@Id
 	@Column(name = "USER_ID")
@@ -23,9 +22,6 @@ public class User {
 	private String lastName;
 
 	private String loginIpAddress;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdDate;
 
 	@Column(nullable = false)
 	private Boolean active;
@@ -68,14 +64,6 @@ public class User {
 
 	public void setLoginIpAddress(String loginIpAddress) {
 		this.loginIpAddress = loginIpAddress;
-	}
-
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
 	}
 
 	public Boolean isActive() {

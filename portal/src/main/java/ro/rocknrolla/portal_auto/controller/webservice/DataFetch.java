@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/auth")
-public class AuthenticationEndpoint {
+@RequestMapping("/webservice")
+public class DataFetch {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationEndpoint.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DataFetch.class);
 
-    @RequestMapping(value = "/getPrincipal/{token}", method = RequestMethod.GET)
-    public ResponseEntity getPrincipal(@PathVariable String token) {
+    @RequestMapping(value = "/carInformation/{data}", method = RequestMethod.GET)
+    public ResponseEntity getPrincipal(@PathVariable String data) {
 
         return ResponseEntity.ok("");
     }
