@@ -2,21 +2,20 @@ package ro.rocknrolla.common;
 
 import java.io.Serializable;
 
+
+/**
+ * Class used for sensor name and value transport.
+ */
 public class SensorDTO implements Serializable {
 
 
-    private Long id;
-
     private String name;
+    private String value;
 
-    private String type;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public SensorDTO(String name, String value) {
+        this.name = name;
+        this.value = value;
     }
 
     public String getName() {
@@ -27,11 +26,13 @@ public class SensorDTO implements Serializable {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+
+    public String getValue() {
+        return value;
     }
 
-    public void setType(String type) {
-        this.type = type;
+
+    public void setValue(String value) {
+        this.value = value;
     }
 }
