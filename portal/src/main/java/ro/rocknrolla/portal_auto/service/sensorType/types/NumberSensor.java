@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import ro.rocknrolla.portal_auto.service.sensorType.SensorType;
 
 @Component
-public class NumberSensor implements SensorType{
+public class NumberSensor implements SensorType {
     @Override
     public String computeValue(String currentValue) {
         return null;
@@ -18,6 +18,14 @@ public class NumberSensor implements SensorType{
 
     @Override
     public String getStatusByCriticleValue(String currentValue, String criticleValue) {
-        return null;
+        Integer current = Integer.valueOf(currentValue);
+        Integer critycle = Integer.valueOf(criticleValue);
+        if (current < critycle) {
+            return SensorCurrentStatusMessage.ALERT.name();
+        } else if (current - critycle < 50) {
+            return SensorCurrentStatusMessage.WARNING.name();
+        } else {
+            return SensorCurrentStatusMessage.OK.name();
+        }
     }
 }

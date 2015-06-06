@@ -17,6 +17,7 @@ public class StatusSensor implements SensorType {
 
     @Override
     public String getStatusByCriticleValue(String currentValue, String criticleValue) {
-        return null;
+        //nothing to compute, just return current value
+        return currentValue;
     }
 }

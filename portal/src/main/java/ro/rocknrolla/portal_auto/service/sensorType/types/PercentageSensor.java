@@ -17,6 +17,14 @@ public class PercentageSensor implements SensorType {
 
     @Override
     public String getStatusByCriticleValue(String currentValue, String criticleValue) {
-        return null;
+        Integer current = Integer.valueOf(currentValue);
+        Integer critycle = Integer.valueOf(criticleValue);
+        if (current < critycle) {
+            return SensorCurrentStatusMessage.ALERT.name();
+        } else if (current - critycle < 50) {
+            return SensorCurrentStatusMessage.WARNING.name();
+        } else {
+            return SensorCurrentStatusMessage.OK.name();
+        }
     }
 }

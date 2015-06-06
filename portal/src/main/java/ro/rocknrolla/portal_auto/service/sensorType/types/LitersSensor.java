@@ -17,6 +17,14 @@ public class LitersSensor implements SensorType {
 
     @Override
     public String getStatusByCriticleValue(String currentValue, String criticleValue) {
-        return null;
+        Double current = Double.valueOf(currentValue);
+        Double critycle = Double.valueOf(criticleValue);
+        if (current.compareTo(critycle) == -1) {
+            return SensorCurrentStatusMessage.ALERT.name();
+        } else if (current - critycle < 200) {
+            return SensorCurrentStatusMessage.WARNING.name();
+        } else {
+            return SensorCurrentStatusMessage.OK.name();
+        }
     }
 }
