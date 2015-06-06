@@ -24,13 +24,13 @@ insert into car(car_id,active, deviceuuid, name, user_id) VALUES (1,TRUE ,'384e8
 INSERT INTO car(
   car_id, created_date, last_modified_date, active, deviceuuid,
   name, user_id)
-VALUES (2, now(), now(), true, '112',
+VALUES (2, now(), now(), true, 'parse_384e83d526570a43',
         'Ford Fiesta', 3);
 
 INSERT INTO car(
   car_id, created_date, last_modified_date, active, deviceuuid,
   name, user_id)
-VALUES (3, now(), now(), true, '112',
+VALUES (3, now(), now(), true, '1126',
         'Ford KA', 3);
 
 insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
