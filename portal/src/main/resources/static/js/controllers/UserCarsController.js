@@ -1,5 +1,8 @@
 angular.module("portal_app")
-    .controller("UserCarsController",  ["$scope", "CarsService",  function($scope, CarsService) {
-        $scope.myCars = CarsService.getCars();
+    .controller("UserCarsController",  ["$scope", "$http", function($scope,  $http) {
+
+        $http.get('/cars').success(function (response) {
+            $scope.myCars =  response;
+        });
 
     }]);
