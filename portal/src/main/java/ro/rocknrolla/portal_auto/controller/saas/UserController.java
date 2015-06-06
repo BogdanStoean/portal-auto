@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import ro.rocknrolla.portal_auto.bean.Response;
-import ro.rocknrolla.portal_auto.signup.bean.UserModel;
-import ro.rocknrolla.portal_auto.signup.service.UserService;
+import ro.rocknrolla.portal_auto.controller.bean.UserModel;
+import ro.rocknrolla.portal_auto.service.UserService;
 
 import javax.validation.Valid;
 import java.security.Principal;

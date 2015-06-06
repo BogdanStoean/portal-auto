@@ -1,4 +1,4 @@
-package ro.rocknrolla.portal_auto.signup.bean;
+package ro.rocknrolla.portal_auto.controller.bean;
 
 /**
  * Created by Bogdan Stoean on 6/6/15.
