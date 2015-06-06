@@ -8,6 +8,12 @@ public final class CurrentAuthenticatedUser {
 	}
 
 	public static String getUsername() {
+		if(SecurityContextHolder.getContext() == null){
+			return null;
+		}
+		if(SecurityContextHolder.getContext().getAuthentication() == null){
+			return null;
+		}
 		return SecurityContextHolder.getContext().getAuthentication().getName();
 	}
 }
