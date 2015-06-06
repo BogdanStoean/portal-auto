@@ -2,11 +2,8 @@ package ro.rocknrolla.portal_auto.entities;
 
 import javax.persistence.*;
 
-/**
- * Created by virgil on 06.06.2015.
- */
 @Entity
-public class CarEntity extends AbstractEntity<CarEntity> {
+public class Car extends AbstractEntity<Car> {
 
     @Id
     @Column(name = "CAR_ID")

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import ro.rocknrolla.common.CarParametersDTO;
-import ro.rocknrolla.portal_auto.entities.CarEntity;
+import ro.rocknrolla.portal_auto.entities.Car;
 import ro.rocknrolla.portal_auto.repositories.CarRepository;
 
 import java.util.List;
@@ -47,7 +47,7 @@ public class DataFetch {
             return false;
         }
 
-        CarEntity carEntity = carRepository.findByDeviceUUIDAndActive(deviceUUD.getDeviceId(), true);
+        Car carEntity = carRepository.findByDeviceUUIDAndActive(deviceUUD.getDeviceId(), true);
         if (carEntity == null) {
             return false;
         }
