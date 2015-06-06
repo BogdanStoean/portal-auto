@@ -3,7 +3,7 @@ package ro.rocknrolla.portal_auto.entities;
 import javax.persistence.*;
 
 @Entity
-public class CarHistory extends AbstractEntity<CarHistory> {
+public class CarHistory extends AbstractEntity<User> {
 
     @Id
     @Column(name = "CAR_HISTORY_ID")

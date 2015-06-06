@@ -3,7 +3,7 @@ package ro.rocknrolla.portal_auto.entities;
 import javax.persistence.*;
 
 @Entity
-public class Sensor extends AbstractEntity<Sensor>{
+public class Sensor extends AbstractEntity<User>{
 
     @Id
     @Column(name = "SENSOR_ID")

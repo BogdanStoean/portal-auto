@@ -24,13 +24,12 @@ public class DataFetch {
     private static final Logger LOGGER = LoggerFactory.getLogger(DataFetch.class);
 
     @RequestMapping(value = "/carInformation", method = RequestMethod.POST)
-    public ResponseEntity getPrincipal(@RequestBody CarParametersDTO data) {
+    public ResponseEntity carInformation(@RequestBody CarParametersDTO data) {
         LOGGER.info("Someone is hitting app");
-        carRepository.findByDeviceUUIDAndActive("UUID", true);
+        Car car = carRepository.findByDeviceUUIDAndActive("UUID", true);
         if (!isValidData(data)) {
             return ResponseEntity.ok("500 Bad Data");
         }
-
 
         return ResponseEntity.ok("");
     }
