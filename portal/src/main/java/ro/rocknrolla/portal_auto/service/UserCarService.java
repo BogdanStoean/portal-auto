@@ -60,4 +60,9 @@ public class UserCarService {
         return carModel;
 
     }
+
+    public CarModel getCarById(Long carId){
+        Car car = carRepository.findOne(carId);
+        return  new CarModel(car);
+    }
 }

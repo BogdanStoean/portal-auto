@@ -30,8 +30,8 @@ public class CarSensorCriticalValueController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/list/{carId}")
-    public List<CarSensorCriticalValue> list(@PathVariable Long carId) {
-        return carSensorCriticalValueService.listByCar(carId);
+    public List<CarSensorCriticalValueModel> list(@PathVariable("carId") Long carId) {
+        return carSensorCriticalValueService.listModelByCar(carId);
     }
 
 }

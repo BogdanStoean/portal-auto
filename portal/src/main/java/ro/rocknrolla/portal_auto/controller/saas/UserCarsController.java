@@ -3,10 +3,7 @@ package ro.rocknrolla.portal_auto.controller.saas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ro.rocknrolla.portal_auto.controller.bean.CarModel;
 import ro.rocknrolla.portal_auto.security.CurrentAuthenticatedUser;
 import ro.rocknrolla.portal_auto.service.UserCarService;
@@ -26,7 +23,7 @@ public class UserCarsController {
     private UserCarService userCarService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<CarModel> geuUserCarList() {
+    public List<CarModel> getUserCarList() {
         return userCarService.getUserCars(CurrentAuthenticatedUser.getUsername());
     }
 
@@ -36,5 +33,9 @@ public class UserCarsController {
         return new ResponseEntity<>(ret, HttpStatus.CREATED);
     }
 
+    @RequestMapping(value="/{carId}", method = RequestMethod.GET)
+    public CarModel getCarById(@PathVariable("carId") Long carId) {
+        return userCarService.getCarById(carId);
+    }
 
 }

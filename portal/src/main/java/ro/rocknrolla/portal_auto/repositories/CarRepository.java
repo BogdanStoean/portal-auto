@@ -9,4 +9,6 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     Car findByDeviceUUIDAndActive(String deviceUUID, boolean active);
 
     List<Car> findByUserEmail(String email);
+
+
 }
