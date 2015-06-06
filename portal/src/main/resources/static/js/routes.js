@@ -43,6 +43,10 @@ angular.module('portal_app')
             .when('/myHome', {
                 templateUrl: '/templates/myHome.html',
                 auth: true
+            }).when('/myCars', {
+                templateUrl: '/templates/myCars.html',
+                controller: 'UserCarsController',
+                auth: true
             });
 
         $httpProvider.interceptors.push("statusInterceptor");
