@@ -19,6 +19,7 @@ import java.util.TimerTask;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import ro.rocknrolla.android.smartcar.SmartCar;
 import ro.rocknrolla.android.smartcar.api.ApiService;
 import ro.rocknrolla.android.smartcar.simulator.SensorsSimulator;
 import ro.rocknrolla.common.CarParametersDTO;
@@ -31,11 +32,10 @@ public class SenzorsService extends Service {
     public static final long NOTIFY_INTERVAL = 10 * 1000; // 10 seconds
     private Handler mHandler = new Handler();
     private Timer mTimer;
-    private String android_id;
+
     @Override
     public void onCreate() {
 
-        android_id = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         sharedPreferences = getSharedPreferences("ro.rocknrolla.android.smartcar", Context.MODE_PRIVATE);
 
         // cancel if already existed
@@ -72,7 +72,7 @@ public class SenzorsService extends Service {
                 public void run() {
                     List<SensorDTO> sensors = SensorsSimulator.getInstance().getSensors();
                     CarParametersDTO car = new CarParametersDTO();
-                    car.setDeviceId(android_id);
+                    car.setDeviceId(SmartCar.android_id);
                     car.setSensors(sensors);
                     ApiService.getInstance().sendCarInformation(car, new Callback<Object>() {
                         @Override

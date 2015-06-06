@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ro.rocknrolla.android.smartcar.utils.ResizableImageView
         android:id="@+id/topImage"
@@ -35,7 +36,7 @@
                 android:textSize="25sp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
-                android:text="Register the car in system"
+                android:text="Subscribe the car"
                 android:textColor="@color/abc_primary_text_material_dark"
                 android:layout_centerHorizontal="true"
                 android:gravity="center_horizontal"
@@ -64,5 +65,20 @@
         </LinearLayout>
     </FrameLayout>
 
+    <fr.castorflex.android.smoothprogressbar.SmoothProgressBar
+        android:id="@+id/progressSmoothBar"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:indeterminate="true"
+        app:spb_sections_count="2"
+        app:spb_colors="@array/pocket_bar_colors"
+        app:spb_speed="1.5"
+        app:spb_stroke_width="3dp"
+        app:spb_stroke_separator_length="3dp"
+        app:spb_reversed="false"
+        app:spb_mirror_mode="true"
+        app:spb_progressiveStart_activated="true"
+        app:spb_progressiveStart_speed="5.5"
+        app:spb_progressiveStop_speed="1.0"/>
 
 </RelativeLayout>
