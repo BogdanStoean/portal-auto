@@ -7,10 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ro.rocknrolla.common.CarParametersDTO;
 import ro.rocknrolla.portal_auto.entities.Car;
 import ro.rocknrolla.portal_auto.repositories.CarRepository;
@@ -26,8 +23,8 @@ public class DataFetch {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DataFetch.class);
 
-    @RequestMapping(value = "/carInformation/{data}", method = RequestMethod.GET)
-    public ResponseEntity getPrincipal(@PathVariable String data) {
+    @RequestMapping(value = "/carInformation", method = RequestMethod.POST)
+    public ResponseEntity getPrincipal(@RequestBody CarParametersDTO data) {
         carRepository.findByDeviceUUIDAndActive("UUID", true);
         if (!isValidData(data)) {
             return ResponseEntity.ok("500 Bad Data");
@@ -37,17 +34,16 @@ public class DataFetch {
         return ResponseEntity.ok("");
     }
 
-    public boolean isValidData(String data) {
-        if (data == null || data.trim().length() == 0) {
+    public boolean isValidData(CarParametersDTO carParametersDTO) {
+        if (carParametersDTO == null) {
+            return false;
+        }
+        String deviceUUD = carParametersDTO.getDeviceId();
+        if (deviceUUD == null || deviceUUD.trim().length() == 0) {
             return false;
         }
 
-        CarParametersDTO deviceUUD = extractCarParameter(data);
-        if (deviceUUD.getDeviceId() == null || deviceUUD.getDeviceId().trim().length() == 0) {
-            return false;
-        }
-
-        Car carEntity = carRepository.findByDeviceUUIDAndActive(deviceUUD.getDeviceId(), true);
+        Car carEntity = carRepository.findByDeviceUUIDAndActive(carParametersDTO.getDeviceId(), true);
         if (carEntity == null) {
             return false;
         }

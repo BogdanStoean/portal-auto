@@ -12,12 +12,44 @@ public class CarHistory extends AbstractEntity<CarHistory> {
     private Long id;
 
     @JoinColumn(name = "car_id")
-    @ManyToMany
+    @ManyToOne
     private Car car;
 
     @JoinColumn(name = "sensor_id")
-    @ManyToMany
+    @ManyToOne
     private Sensor sensor;
 
+    private String value;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public Sensor getSensor() {
+        return sensor;
+    }
+
+    public void setSensor(Sensor sensor) {
+        this.sensor = sensor;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 }
