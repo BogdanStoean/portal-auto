@@ -3,21 +3,21 @@ VALUES (3, '7c222fb2927d828af22f592134e8932480637c0d', 'admin@portal_auto.ro', '
 INSERT INTO USERS (user_id, password, email, first_name, last_name, login_ip_address, created_date, active)
 VALUES (4, '7c222fb2927d828af22f592134e8932480637c0d', 'superuser@portal_auto.ro', 'Prosop', 'Titi', '192.168.80.25', now(), true);
 
-insert into sensor (sensor_id, name, type) VALUES (2,'apa de parbriz','Percentage');
-insert into sensor (sensor_id, name, type) VALUES (3,'antigel','Percentage');
-insert into sensor (sensor_id, name, type) VALUES (4,'placute frane','Percentage');
-insert into sensor (sensor_id, name, type) VALUES (5,'disc frana','Percentage');
-insert into sensor (sensor_id, name, type) VALUES (6,'carburant','Liters');
-insert into sensor (sensor_id, name, type) VALUES (7,'cauciucuri uzura','Percentage');
-insert into sensor (sensor_id, name, type) VALUES (8,'gradul de uzura la bateriei','Percentage');
-insert into sensor (sensor_id, name, type) VALUES (9,'abs','Status');
-insert into sensor (sensor_id, name, type) VALUES (10,'motor','Status');
-insert into sensor (sensor_id, name, type) VALUES (11,'servo directie','Status');
-insert into sensor (sensor_id, name, type) VALUES (12,'senzori ploaie','Status');
-insert into sensor (sensor_id, name, type) VALUES (13,'pozitie','Status');
-insert into sensor (sensor_id, name, type) VALUES (14,'faruri','Status');
-insert into sensor (sensor_id, name, type) VALUES (15,'parcare','Status');
-insert into sensor (sensor_id, name, type) VALUES (16,'KM','Number');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (2,'apa de parbriz','Percentage','Trebuie sa adaugi apa de parbriz');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (3,'antigel','Percentage','Atentie, adauga antigel');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (4,'placute frane','Percentage','Placutele de frane sunt pe duca');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (5,'disc frana','Percentage','Discurile de frane sunt pe duca');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (6,'carburant','Liters','Trebuie sa faci plinul in curand');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (7,'cauciucuri uzura','Percentage','Cauciucurile necesita inlocuire');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (8,'gradul de uzura la bateriei','Percentage','Bateria o sa te lase in curand');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (9,'abs','Status','ABS-ul are nevoie de verificare');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (10,'motor','Status','Motorul are nevoie de verificare');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (11,'servo directie','Status','Servo-directia are probleme');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (12,'senzori ploaie','Status','Senzorii de ploaie nu mai functioneaza');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (13,'pozitie','Status','Senzorii de positie au probleme');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (14,'faruri','Status','Senzorii de faruri au probleme');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (15,'parcare','Status','Senzorii de faruri au probleme');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (16,'KM','Number','Meh?!?');
 
 
 insert into car(car_id,active, deviceuuid, name, user_id) VALUES (1,TRUE ,'384e83d526570a43' ,'lucian',3);

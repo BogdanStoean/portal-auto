@@ -13,6 +13,7 @@ public class Sensor extends AbstractEntity<User>{
 
     private String name;
     private String type;
+    private String alertMessage;
 
     public Long getId() {
         return id;
@@ -36,5 +37,13 @@ public class Sensor extends AbstractEntity<User>{
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getAlertMessage() {
+        return alertMessage;
+    }
+
+    public void setAlertMessage(String alertMessage) {
+        this.alertMessage = alertMessage;
     }
 }
