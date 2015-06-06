@@ -10,5 +10,7 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     List<Car> findByUserEmail(String email);
 
+    List<Car> findByActiveTrue();
+
 
 }
