@@ -22,7 +22,7 @@ public class DataFetch {
     @Autowired
     private CarRepository carRepository;
 
-    @RequestMapping(value = "/carinformation", method = RequestMethod.POST,consumes = "application/json")
+    @RequestMapping(value = "/carinformation", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity carInformation(@RequestBody CarParametersDTO data) {
         Car car = carRepository.findByDeviceUUIDAndActive(data.getDeviceId(), true);
         if (car == null) {
