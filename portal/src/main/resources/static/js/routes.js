@@ -51,6 +51,10 @@ angular.module('portal_app')
                 templateUrl: '/templates/map.html',
                 controller: 'MapController',
                 auth: true
+            }).when('/myDocuments', {
+                templateUrl: '/templates/myDocuments.html',
+                controller: 'DocumentsController',
+                auth: true
             });
 
         $httpProvider.interceptors.push("statusInterceptor");

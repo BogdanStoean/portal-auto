@@ -54,7 +54,6 @@ public class CarActualDataService {
             }
             obj.setName(carHistory.getSensor().getName());
             carDto.getSensorDisplayDTOs().add(obj);
-
         }
         return carDto;
     }
