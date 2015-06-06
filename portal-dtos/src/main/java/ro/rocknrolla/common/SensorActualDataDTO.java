@@ -1,7 +1,7 @@
 package ro.rocknrolla.common;
 
 
-public class SensorDisplayDTO {
+public class SensorActualDataDTO {
 
     private String name;
     private String status;

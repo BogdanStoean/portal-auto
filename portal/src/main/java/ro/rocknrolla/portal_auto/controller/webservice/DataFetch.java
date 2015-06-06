@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import ro.rocknrolla.common.CarParametersDTO;
 import ro.rocknrolla.portal_auto.entities.Car;
 import ro.rocknrolla.portal_auto.repositories.CarRepository;
+import ro.rocknrolla.portal_auto.service.CarActualDataService;
 import ro.rocknrolla.portal_auto.service.CarHistoryService;
 
 @RestController
@@ -22,6 +23,9 @@ public class DataFetch {
 
     @Autowired
     private CarHistoryService carHistoryService;
+
+    @Autowired
+    private CarActualDataService carActualDataService;
 
     @RequestMapping(value = "/carinformation", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity carInformation(@RequestBody CarParametersDTO data) {
@@ -71,8 +75,19 @@ public class DataFetch {
             LOGGER.error("Unknown car in trying the 'check device' endpoint with unregistered id");
             ResponseEntity.notFound();
         }
-        LOGGER.error("Loggin existing car: " + carEntity.getName());
+        LOGGER.info("Loggin existing car: " + carEntity.getName());
         return ResponseEntity.ok("200");
+    }
+
+
+    @RequestMapping(value = "/getActualDataForCar/{car}", method = RequestMethod.GET)
+    public ResponseEntity getDataForDevice(@PathVariable String car) {
+        if (car == null) {
+            LOGGER.error("Unknow car is trying the 'get actual data for car' endpoint");
+            ResponseEntity.notFound();
+        }
+
+        return ResponseEntity.ok(carActualDataService.getIt(car));
     }
 
 }
