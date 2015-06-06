@@ -1,5 +1,5 @@
 angular.module("portal_app")
-    .factory("statusInterceptor", ["$location", "$q", function ($location, $q) {
+    .factory("statusInterceptor", ["$location", "$q", "$rootScope", function ($location, $q, $rootScope) {
         return {
             responseError: function (response) {
                 if (response.status != 403) {

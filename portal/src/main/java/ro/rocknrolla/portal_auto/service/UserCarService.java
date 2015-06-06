@@ -36,7 +36,7 @@ public class UserCarService {
         return results;
     }
 
-    public void create(CarModel carModel) {
+    public CarModel create(CarModel carModel) {
 
         Car car;
 
@@ -50,11 +50,14 @@ public class UserCarService {
             throw new ServerEntityNotFoundException("id", "entity.not.found");
         }
 
-        car.setActive(true);
+        car.setActive(carModel.getActive());
         car.setDeviceUUID(carModel.getDeviceUUID());
         car.setName(carModel.getName());
         car.setUser(userRepository.findActiveByEmail(CurrentAuthenticatedUser.getUsername()));
 
-        carRepository.save(car);
+        car = carRepository.save(car);
+        carModel.setCarId(car.getId());
+        return carModel;
+
     }
 }

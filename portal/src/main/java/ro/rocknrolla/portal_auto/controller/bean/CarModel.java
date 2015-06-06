@@ -15,6 +15,9 @@ public class CarModel {
 
     private boolean active;
 
+    public CarModel() {
+    }
+
     public CarModel(Car car) {
         this.carId = car.getId();
         this.name = car.getName();

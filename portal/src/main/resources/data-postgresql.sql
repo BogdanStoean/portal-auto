@@ -35,3 +35,9 @@ INSERT INTO car(
   name, user_id)
 VALUES (3, now(), now(), true, '112',
         'Ford KA', 3);
+
+ALTER SEQUENCE user_id_seq RESTART WITH 100;
+ALTER SEQUENCE sensor_id_seq RESTART WITH 100;
+ALTER SEQUENCE car_sensor_critical_value_seq RESTART WITH 100;
+ALTER SEQUENCE car_id_seq RESTART WITH 100;
+ALTER SEQUENCE car_history_id_seq RESTART WITH 100;

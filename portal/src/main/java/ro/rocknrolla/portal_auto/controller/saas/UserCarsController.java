@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import ro.rocknrolla.portal_auto.bean.Response;
 import ro.rocknrolla.portal_auto.controller.bean.CarModel;
 import ro.rocknrolla.portal_auto.security.CurrentAuthenticatedUser;
 import ro.rocknrolla.portal_auto.service.UserCarService;
@@ -31,10 +30,10 @@ public class UserCarsController {
         return userCarService.getUserCars(CurrentAuthenticatedUser.getUsername());
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Response> create(@RequestBody @Valid CarModel carModel) {
-        userCarService.create(carModel);
-        return new ResponseEntity<>(new Response(true), HttpStatus.CREATED);
+    @RequestMapping(method = RequestMethod.POST, value = "/create")
+    public ResponseEntity<CarModel> create(@RequestBody @Valid CarModel carModel) {
+        CarModel ret = userCarService.create(carModel);
+        return new ResponseEntity<>(ret, HttpStatus.CREATED);
     }
 
 
