@@ -10,10 +10,6 @@ public class SensorDTO implements Serializable {
     private String name;
     private String value;
 
-    public SensorDTO(String name, String value) {
-        this.name = name;
-        this.value = value;
-    }
 
     public String getName() {
         return name;
