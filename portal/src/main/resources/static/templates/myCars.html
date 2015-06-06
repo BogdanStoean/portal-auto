@@ -1,4 +1,5 @@
 <h1>My Cars</h1>
+<button ng-click='toggleModal()'>Add car</button>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -15,3 +16,21 @@
         </tr>
     </tbody>
 </table>
+
+<modal-dialog show='modalShown' width='750px' height='90%'>
+    <h1>Add Car</h1>
+    <form role="form">
+        <div class="form-group">
+            <label for="name">Car name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter car name" />
+        </div>
+        <div class="form-group">
+            <label for="deviceUUID">Device UUID</label>
+            <input type="text" class="form-control" id="deviceUUID" placeholder="Enter device UUID" />
+        </div>
+        <div class="checkbox">
+            <label><input name="active" type="checkbox"> Active</label>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</modal-dialog>

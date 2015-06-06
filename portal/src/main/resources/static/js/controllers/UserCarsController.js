@@ -5,4 +5,9 @@ angular.module("portal_app")
             $scope.myCars =  response;
         });
 
+        $scope.modalShown = false;
+        $scope.toggleModal = function() {
+            $scope.modalShown = !$scope.modalShown;
+        };
     }]);
+
