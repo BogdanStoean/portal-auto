@@ -1,7 +1,14 @@
 package ro.rocknrolla.portal_auto.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.rocknrolla.common.CarParametersDTO;
+import ro.rocknrolla.common.SensorDTO;
+import ro.rocknrolla.portal_auto.entities.Car;
+import ro.rocknrolla.portal_auto.entities.CarHistory;
+import ro.rocknrolla.portal_auto.entities.Sensor;
+import ro.rocknrolla.portal_auto.repositories.CarRepository;
+import ro.rocknrolla.portal_auto.repositories.SensorRepository;
 
 import javax.transaction.Transactional;
 
@@ -10,7 +17,25 @@ import javax.transaction.Transactional;
 @Transactional
 public class CarHistoryService {
 
-    public void persistCarHistory(CarParametersDTO carParameters){
+    @Autowired
+    private CarRepository carRepository;
+
+    @Autowired
+    private SensorRepository sensorRepository;
+
+
+    public void persistCarHistory(CarParametersDTO carParameters) {
+
+        Car car = carRepository.findByDeviceUUIDAndActive(carParameters.getDeviceId(), true);
+        for(SensorDTO sensorDTO: carParameters.getSensors()){
+            Sensor byName = sensorRepository.findByName(sensorDTO.getName());
+            if(byName == null){
+                continue;
+            }
+            CarHistory carHistory = new CarHistory();
+//            carHistory.setSensor(sensorDTO);
+            carHistory.setValue(sensorDTO.getValue());
+        }
 
     }
 }

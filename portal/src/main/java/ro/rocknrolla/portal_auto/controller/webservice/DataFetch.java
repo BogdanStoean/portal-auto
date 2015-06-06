@@ -18,18 +18,24 @@ import java.util.List;
 @RequestMapping("/webservice")
 public class DataFetch {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(DataFetch.class);
+
     @Autowired
     private CarRepository carRepository;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DataFetch.class);
-
     @RequestMapping(value = "/carInformation", method = RequestMethod.POST)
     public ResponseEntity carInformation(@RequestBody CarParametersDTO data) {
-        LOGGER.info("Someone is hitting app");
-        Car car = carRepository.findByDeviceUUIDAndActive("UUID", true);
-        if (!isValidData(data)) {
+        Car car = carRepository.findByDeviceUUIDAndActive(data.getDeviceId(), true);
+        if(car == null){
+            LOGGER.info("Someone is hitting app with an unknown device");
             return ResponseEntity.ok("500 Bad Data");
         }
+        if (!isValidData(data)) {
+            LOGGER.info("Someone is hitting app with bad data");
+            return ResponseEntity.ok("500 Bad Data");
+        }
+
+        LOGGER.info("Someone is hitting app");
 
         return ResponseEntity.ok("");
     }

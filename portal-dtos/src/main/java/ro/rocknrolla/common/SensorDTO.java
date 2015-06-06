@@ -7,11 +7,8 @@ import java.io.Serializable;
  * Class used for sensor name and value transport.
  */
 public class SensorDTO implements Serializable {
-
-
     private String name;
     private String value;
-
 
     public SensorDTO(String name, String value) {
         this.name = name;
