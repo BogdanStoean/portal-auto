@@ -18,13 +18,13 @@ public class SensorActualDataComparator implements Comparator<SensorActualDataDT
 
         if(!status1.equalsIgnoreCase(status2)) {
             if (status1.equalsIgnoreCase("alert"))
-                return 1;
+                return -1;
             else if (status2.equalsIgnoreCase("alert"))
-                return -1;
-            else if(status2.equalsIgnoreCase("ok"))
                 return 1;
-            else
+            else if(status2.equalsIgnoreCase("ok"))
                 return -1;
+            else
+                return 1;
         }
 
         return 0;
