@@ -17,7 +17,7 @@ import ro.rocknrolla.common.SensorActualDataDTO;
 
 public class StatusActivity extends Activity {
 
-    public static final long NOTIFY_INTERVAL = 1 * 60 * 1000; // 10 minutes
+    public static final long NOTIFY_INTERVAL = 5 * 60 * 1000; // 5 minutes
     private Handler mHandler = new Handler();
     private Timer mTimer;
 

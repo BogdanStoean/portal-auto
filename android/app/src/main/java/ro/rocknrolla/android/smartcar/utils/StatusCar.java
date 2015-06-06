@@ -18,7 +18,7 @@ import ro.rocknrolla.common.SensorActualDataDTO;
 
 public class StatusCar {
     private static StatusCar instance = null;
-    private List<SensorActualDataDTO> list = new ArrayList<>();
+    private final List<SensorActualDataDTO> list = new ArrayList<>();
 
     protected StatusCar() {}
 
@@ -37,8 +37,10 @@ public class StatusCar {
         ApiService.getInstance().getCarStatus(SmartCar.android_id, new Callback<CarActualDataDTO>() {
             @Override
             public void success(CarActualDataDTO carActualDataDTOs, Response response) {
-                list = carActualDataDTOs.getSensorDisplayDTOs();
+                list.clear();
+                list.addAll(carActualDataDTOs.getSensorDisplayDTOs());
                 Collections.sort(list, new SensorActualDataComparator());
+
                 try {
                     callback.call();
                 } catch (Exception e) {
