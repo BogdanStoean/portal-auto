@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import ro.rocknrolla.portal_auto.controller.bean.CarBean;
+import ro.rocknrolla.portal_auto.controller.bean.CarModel;
 import ro.rocknrolla.portal_auto.security.CurrentAuthenticatedUser;
 import ro.rocknrolla.portal_auto.service.UserCarService;
 
@@ -22,9 +22,8 @@ public class UserCarsController {
     private UserCarService userCarService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<CarBean> geuUserCarList() {
+    public List<CarModel> geuUserCarList() {
         return userCarService.getUserCars(CurrentAuthenticatedUser.getUsername());
-
     }
 
 }
