@@ -1,4 +1,4 @@
-package ro.rocknrolla.portal_auto.security.auth_endpoint;
+package ro.rocknrolla.portal_auto.controller.webservice;
 
 
 import org.slf4j.Logger;

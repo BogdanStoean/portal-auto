@@ -1,4 +1,4 @@
-package ro.rocknrolla.portal_auto.signup.controller;
+package ro.rocknrolla.portal_auto.controller.saas;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
