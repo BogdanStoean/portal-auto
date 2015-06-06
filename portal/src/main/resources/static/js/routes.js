@@ -1,4 +1,4 @@
-angular.module('broker')
+angular.module('portal_app')
     .config(function ($routeProvider, $httpProvider) {
         $routeProvider
             .when('/', {

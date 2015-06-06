@@ -1,4 +1,4 @@
-angular.module("broker")
+angular.module("portal_app")
     .controller("SignupController", ["$scope", "UserService", "$location", function($scope, userService, $location) {
         $scope.showValidation = false;
         $scope.user = {};

@@ -1,4 +1,4 @@
-angular.module('broker')
+angular.module('portal_app')
     .controller('LoginController', ['$http', '$scope', '$rootScope', '$location', '$routeParams', function ($http, $scope, $rootScope, $location, $routeParams) {
 
         $scope.login = function () {

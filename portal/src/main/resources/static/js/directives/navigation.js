@@ -1,4 +1,4 @@
-angular.module('broker')
+angular.module('portal_app')
     .directive('navBar', function () {
         return {
             replace: true,

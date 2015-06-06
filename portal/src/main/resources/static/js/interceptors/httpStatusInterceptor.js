@@ -1,4 +1,4 @@
-angular.module("broker")
+angular.module("portal_app")
     .factory("statusInterceptor", ["$location", "$q", function ($location, $q) {
         return {
             responseError: function (response) {
