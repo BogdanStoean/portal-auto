@@ -1,11 +1,68 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ro.rocknrolla.android.smartcar.utils.ResizableImageView
+        android:id="@+id/topImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/tracks"/>
+
+
+    <FrameLayout
+        android:id="@+id/register"
+        android:layout_marginTop="50dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#40000000"
+        android:paddingBottom="25dp"
+        android:paddingTop="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:text="Register the car in system"
+                android:textColor="@color/abc_primary_text_material_dark"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:padding="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:text="id"
+                android:textColor="@color/abc_primary_text_material_dark"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/splashTitle"
+                android:gravity="center_horizontal"
+                android:padding="5dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Try again"
+                android:id="@+id/retrie"
+                android:layout_gravity="center_horizontal"
+                android:focusable="true"/>
+        </LinearLayout>
+    </FrameLayout>
+
 
 </RelativeLayout>
