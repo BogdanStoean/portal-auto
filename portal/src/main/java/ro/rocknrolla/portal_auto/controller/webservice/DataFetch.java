@@ -28,7 +28,6 @@ public class DataFetch {
             return ResponseEntity.ok("500 Bad Data");
         }
 
-
         LOGGER.info("Someone is hitting app");
         return ResponseEntity.ok("");
     }
