@@ -43,9 +43,5 @@ public class SensorTypeFactory {
             default:
                 throw new RuntimeException("Unrecognized sensor type: " + type);
         }
-
-
     }
-
-
 }
