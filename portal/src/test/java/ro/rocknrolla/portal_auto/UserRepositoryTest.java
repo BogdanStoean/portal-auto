@@ -13,9 +13,6 @@ import ro.rocknrolla.portal_auto.repositories.UserRepository;
 
 import java.util.List;
 
-/**
- * Created by Bogdan Stoean on 15.04.2015.
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @ActiveProfiles("test")

@@ -11,7 +11,7 @@ public class CarSensorCriticalValueModel {
 
     private Long sensorId;
 
-    private String value;
+    private String criticalValue;
 
     public Long getId() {
         return id;
@@ -37,11 +37,11 @@ public class CarSensorCriticalValueModel {
         this.sensorId = sensorId;
     }
 
-    public String getValue() {
-        return value;
+    public String getCriticalValue() {
+        return criticalValue;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setCriticalValue(String criticalValue) {
+        this.criticalValue = criticalValue;
     }
 }
