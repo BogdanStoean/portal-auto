@@ -46,7 +46,7 @@ public class CarSensorCriticalValueService {
 
         carSensorCriticalValue.setCar(carRepository.findOne(model.getCarId()));
         carSensorCriticalValue.setSensor(sensorRepository.findOne(model.getSensorId()));
-        carSensorCriticalValue.setValue(model.getValue());
+        carSensorCriticalValue.setValue(model.getCriticalValue());
         carSensorCriticalValueRepository.save(carSensorCriticalValue);
 
     }
