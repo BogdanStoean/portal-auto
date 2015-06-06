@@ -25,6 +25,7 @@ import java.util.List;
 public class PushNotificationScheduler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PushNotificationScheduler.class);
+    private static final String PREFIX = "parse_";
 
     @Value("${com.parse.api_id}")
     private String applicationId;
@@ -73,7 +74,7 @@ public class PushNotificationScheduler {
     private void sendNotification(String message, String deviceUUID) {
         ParsePush push = new ParsePush();
         push.setMessage(message);
-        push.setChannel(deviceUUID);
+        push.setChannel(PREFIX + deviceUUID);
         try {
             LOGGER.info("Sending notification to device: " + deviceUUID);
             push.send();
