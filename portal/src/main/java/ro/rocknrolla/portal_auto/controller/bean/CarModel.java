@@ -5,7 +5,7 @@ import ro.rocknrolla.portal_auto.entities.Car;
 /**
  * Created by Flori on 06.06.2015.
  */
-public class CarBean {
+public class CarModel {
 
     private Long carId;
 
@@ -15,7 +15,7 @@ public class CarBean {
 
     private boolean active;
 
-    public CarBean(Car car) {
+    public CarModel(Car car) {
         this.carId = car.getId();
         this.name = car.getName();
         this.deviceUUID = car.getDeviceUUID();

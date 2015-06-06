@@ -2,7 +2,7 @@ package ro.rocknrolla.portal_auto.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ro.rocknrolla.portal_auto.controller.bean.CarBean;
+import ro.rocknrolla.portal_auto.controller.bean.CarModel;
 import ro.rocknrolla.portal_auto.entities.Car;
 import ro.rocknrolla.portal_auto.repositories.CarRepository;
 
@@ -21,8 +21,12 @@ public class UserCarService {
     @Autowired
     private CarRepository carRepository;
 
-    public List<CarBean> getUserCars(String userEmail){
+    public List<CarModel> getUserCars(String userEmail){
         List<Car> cars =  carRepository.findByUserEmail(userEmail);
-        return new ArrayList<>();
+        List<CarModel> results = new ArrayList<>();
+        for (Car car : cars) {
+            results.add(new CarModel(car));
+        }
+        return results;
     }
 }
