@@ -8,9 +8,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.rocknrolla.common.CarParametersDTO;
 import ro.rocknrolla.portal_auto.entities.Car;
+import ro.rocknrolla.portal_auto.entities.CarHistory;
+import ro.rocknrolla.portal_auto.repositories.CarHistoryRepository;
 import ro.rocknrolla.portal_auto.repositories.CarRepository;
 import ro.rocknrolla.portal_auto.service.CarActualDataService;
 import ro.rocknrolla.portal_auto.service.CarHistoryService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/webservice")
@@ -27,6 +31,9 @@ public class DataFetch {
     @Autowired
     private CarActualDataService carActualDataService;
 
+    @Autowired
+    private CarHistoryRepository carHistoryRepository;
+
     @RequestMapping(value = "/carinformation", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity carInformation(@RequestBody CarParametersDTO data) {
         Car car = carRepository.findByDeviceUUIDAndActive(data.getDeviceId(), true);
@@ -38,7 +45,6 @@ public class DataFetch {
             LOGGER.info("Someone is hitting app with bad data");
             return ResponseEntity.ok("500 Bad Data");
         }
-
 
         carHistoryService.persistCarHistory(data);
         LOGGER.info("Someone is hitting app");

@@ -2,9 +2,7 @@ package ro.rocknrolla.portal_auto.entities;
 
 import javax.persistence.*;
 
-/**
- * Created by Bogdan Stoean on 6/6/15.
- */
+
 @Entity
 public class CarSensorCriticalValue {
 
