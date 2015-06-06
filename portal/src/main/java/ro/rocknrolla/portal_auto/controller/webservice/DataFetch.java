@@ -5,13 +5,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ro.rocknrolla.common.CarParametersDTO;
 import ro.rocknrolla.portal_auto.entities.Car;
-import ro.rocknrolla.portal_auto.entities.CarHistory;
 import ro.rocknrolla.portal_auto.repositories.CarRepository;
 import ro.rocknrolla.portal_auto.service.CarHistoryService;
 
@@ -60,6 +56,23 @@ public class DataFetch {
         }
 
         return true;
+    }
+
+
+    @RequestMapping(value = "/checkcar/{car}", method = RequestMethod.GET)
+    public ResponseEntity verifyDevice(@PathVariable String car) {
+        if (car == null) {
+            LOGGER.error("Unknown car in trying the 'check device' endpoint");
+            ResponseEntity.notFound();
+        }
+
+        Car carEntity = carRepository.findByDeviceUUIDAndActive(car, true);
+        if (carEntity == null) {
+            LOGGER.error("Unknown car in trying the 'check device' endpoint with unregistered id");
+            ResponseEntity.notFound();
+        }
+        LOGGER.error("Loggin existing car: " + carEntity.getName());
+        return ResponseEntity.ok("200");
     }
 
 }
