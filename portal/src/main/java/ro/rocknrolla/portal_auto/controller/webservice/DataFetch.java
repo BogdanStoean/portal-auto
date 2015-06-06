@@ -1,18 +1,17 @@
 package ro.rocknrolla.portal_auto.controller.webservice;
 
 
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.type.TypeFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import ro.rocknrolla.common.CarParametersDTO;
 import ro.rocknrolla.portal_auto.entities.Car;
 import ro.rocknrolla.portal_auto.repositories.CarRepository;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/webservice")
@@ -23,10 +22,10 @@ public class DataFetch {
     @Autowired
     private CarRepository carRepository;
 
-    @RequestMapping(value = "/carInformation", method = RequestMethod.POST)
+    @RequestMapping(value = "/carinformation", method = RequestMethod.POST,consumes = "application/json")
     public ResponseEntity carInformation(@RequestBody CarParametersDTO data) {
         Car car = carRepository.findByDeviceUUIDAndActive(data.getDeviceId(), true);
-        if(car == null){
+        if (car == null) {
             LOGGER.info("Someone is hitting app with an unknown device");
             return ResponseEntity.ok("500 Bad Data");
         }
@@ -57,15 +56,4 @@ public class DataFetch {
         return true;
     }
 
-    private CarParametersDTO extractCarParameter(String data) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        List<CarParametersDTO> carParameters = null;
-        try {
-            carParameters = objectMapper.readValue(data, TypeFactory.collectionType(List.class, CarParametersDTO.class));
-        } catch (Exception e) {
-            LOGGER.error("Something went wrong when trying to convert data into DTOs: " + e.getMessage());
-        }
-
-        return carParameters.get(0);
-    }
 }

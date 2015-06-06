@@ -15,9 +15,8 @@ public class CarParametersDTO implements Serializable {
     private List<SensorDTO> sensors;
 
 
-    public CarParametersDTO(String deviceId, List<SensorDTO> sensors) {
-        this.deviceId = deviceId;
-        this.sensors = sensors;
+    public CarParametersDTO(){
+
     }
 
     public String getDeviceId() {
