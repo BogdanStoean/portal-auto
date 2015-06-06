@@ -20,3 +20,6 @@ insert into sensor (sensor_id, name, type) VALUES (12,'senzori ploaie','Status')
 insert into sensor (sensor_id, name, type) VALUES (13,'pozitie','Status');
 insert into sensor (sensor_id, name, type) VALUES (14,'faruri','Status');
 insert into sensor (sensor_id, name, type) VALUES (15,'parcare','Status');
+
+
+insert into car(car_id,active, deviceuuid, name, user_id) VALUES (1,TRUE ,'12345' ,'lucian',3);
