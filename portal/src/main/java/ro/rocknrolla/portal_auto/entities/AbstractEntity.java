@@ -1,36 +1,46 @@
 package ro.rocknrolla.portal_auto.entities;
 
 
+import ro.rocknrolla.portal_auto.security.CurrentAuthenticatedUser;
 
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
 public abstract class AbstractEntity<U> {
 
-    @ManyToOne
-    private U createdBy;
+    private String createdBy;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
 
-    @ManyToOne
-    private U lastModifiedBy;
+    private String lastModifiedBy;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastModifiedDate;
 
-        public U getCreatedBy() {
+    public String getCreatedBy() {
 
         return createdBy;
     }
 
-    public void setCreatedBy(final U createdBy) {
+    public void setCreatedBy(final String createdBy) {
 
         this.createdBy = createdBy;
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        this.lastModifiedBy = CurrentAuthenticatedUser.getUsername();
+        this.lastModifiedDate = new Date();
+    }
+
+    @PrePersist
+    public void prePersist() {
+        this.createdBy = CurrentAuthenticatedUser.getUsername();
+        this.lastModifiedBy = CurrentAuthenticatedUser.getUsername();
+        this.createdDate = new Date();
+        this.lastModifiedDate = new Date();
     }
 
     public Date getCreatedDate() {
@@ -43,12 +53,12 @@ public abstract class AbstractEntity<U> {
         this.createdDate = null == createdDate ? null : createdDate;
     }
 
-    public U getLastModifiedBy() {
+    public String getLastModifiedBy() {
 
         return lastModifiedBy;
     }
 
-    public void setLastModifiedBy(final U lastModifiedBy) {
+    public void setLastModifiedBy(final String lastModifiedBy) {
 
         this.lastModifiedBy = lastModifiedBy;
     }
