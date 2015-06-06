@@ -23,3 +23,15 @@ insert into sensor (sensor_id, name, type) VALUES (15,'parcare','Status');
 
 
 insert into car(car_id,active, deviceuuid, name, user_id) VALUES (1,TRUE ,'12345' ,'lucian',3);
+
+INSERT INTO car(
+  car_id, created_date, last_modified_date, active, deviceuuid,
+  name, user_id)
+VALUES (1, now(), now(), true, '112',
+        'Ford Fiesta', 3);
+
+INSERT INTO car(
+  car_id, created_date, last_modified_date, active, deviceuuid,
+  name, user_id)
+VALUES (2, now(), now(), true, '112',
+        'Ford KA', 3);

@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import ro.rocknrolla.portal_auto.entities.Car;
-import ro.rocknrolla.portal_auto.repositories.CarRepository;
+import ro.rocknrolla.portal_auto.controller.bean.CarBean;
 import ro.rocknrolla.portal_auto.security.CurrentAuthenticatedUser;
+import ro.rocknrolla.portal_auto.service.UserCarService;
 
 import java.util.List;
 
@@ -19,11 +19,12 @@ import java.util.List;
 public class UserCarsController {
 
     @Autowired
-    private CarRepository carRepository;
+    private UserCarService userCarService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Car> geuUserCarList() {
-      return carRepository.findByUserEmail(CurrentAuthenticatedUser.getUsername());
+    public List<CarBean> geuUserCarList() {
+        return userCarService.getUserCars(CurrentAuthenticatedUser.getUsername());
+
     }
 
 }
