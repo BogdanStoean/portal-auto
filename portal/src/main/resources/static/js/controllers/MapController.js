@@ -20,7 +20,7 @@ angular.module("portal_app")
         $scope.testRouteForCar = function() {
             $http.post('/statistics/check', {carId: $routeParams.carId, distance: $scope.gmap.totalKm}).
                 success(function (data, status, headers, config) {
-                    if(data.status == 'OK'){
+                    if(data.status == 'Masina este OK' || data.status == 'Masina este noua'){
                         $scope.alertSuccessValueCheck = false;
                         $scope.alertDangerValueCheck = true;
                     }else{
