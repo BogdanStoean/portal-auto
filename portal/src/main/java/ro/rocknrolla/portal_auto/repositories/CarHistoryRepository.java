@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface CarHistoryRepository extends JpaRepository<CarHistory,Long> {
 
-    @Query(value = "SELECT * FROM car_history * WHERE car_id = (select car_id from car where deviceuuid= ? ) ORDER BY last_modified_date DESC LIMIT 13",nativeQuery = true)
+    @Query(value = "SELECT * FROM car_history * WHERE car_id = (select car_id from car where deviceuuid= ? ) ORDER BY last_modified_date DESC LIMIT 16",nativeQuery = true)
     List<CarHistory> findLastSensorValuesForCar(String deviceUUID);
 }

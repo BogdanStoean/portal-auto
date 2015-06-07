@@ -7,7 +7,8 @@ import org.springframework.stereotype.Component;
 public class AntigelSensorScorer implements SensorScoring {
 
     @Override
-    public int scoreIt(String car, String sensor, SensorPriority sensorPriority) {
+    public int scoreIt(Long carId, String sensor, SensorPriority sensorPriority) {
+        double sensorPriorityPoints = sensorPriority.getPoints();
         return 0;
     }
 }
