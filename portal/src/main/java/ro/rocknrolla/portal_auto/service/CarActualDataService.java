@@ -11,6 +11,7 @@ import ro.rocknrolla.portal_auto.repositories.CarRepository;
 import ro.rocknrolla.portal_auto.repositories.CarSensorCriticalValueRepository;
 import ro.rocknrolla.portal_auto.service.sensorType.SensorTypeFactory;
 import ro.rocknrolla.portal_auto.service.sensorType.types.SensorCurrentStatusMessage;
+import ro.rocknrolla.portal_auto.travel_algorithm.impl.DefaultSensorScorer;
 
 import java.util.List;
 

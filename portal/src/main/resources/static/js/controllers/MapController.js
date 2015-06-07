@@ -14,7 +14,8 @@ angular.module("portal_app")
 
         $scope.alertDangerValueCheck = true;
         $scope.alertSuccessValueCheck = true;
-        $scope.messageValueCheck = true;
+        $scope.messageValueCheck = '';
+        $scope.statusValueCheck = '';
 
         $scope.testRouteForCar = function() {
             $http.post('/statistics/check', {carId: $routeParams.carId, distance: $scope.gmap.totalKm}).
@@ -27,6 +28,7 @@ angular.module("portal_app")
                         $scope.alertDangerValueCheck = false;
                     }
                     $scope.messageValueCheck = data.message;
+                    $scope.statusValueCheck = data.status;
                 }).
                 error(function (data, status, headers, config) {
                     console.log(data);

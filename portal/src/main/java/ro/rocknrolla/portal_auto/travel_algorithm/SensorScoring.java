@@ -1,7 +1,11 @@
 package ro.rocknrolla.portal_auto.travel_algorithm;
 
 
+import ro.rocknrolla.portal_auto.entities.CarHistory;
+
+import java.util.List;
+
 public interface SensorScoring {
 
-    int scoreIt(Long carId, String sensor, SensorPriority sensorPriority, Long KM);
+    int scoreIt(List<CarHistory> carHistoryList, SensorPriority sensorPriority);
 }

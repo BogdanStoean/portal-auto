@@ -11,4 +11,6 @@ import java.util.List;
 public interface CarSensorCriticalValueRepository extends JpaRepository<CarSensorCriticalValue, Long> {
 
     List<CarSensorCriticalValue> findByCarId(Long carId);
+
+    CarSensorCriticalValue findOneByCarIdAndSensorId(Long carId, Long sensorId);
 }

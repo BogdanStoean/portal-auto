@@ -20,7 +20,7 @@ insert into sensor (sensor_id, name, type,alert_message) VALUES (14,'faruri','St
 insert into sensor (sensor_id, name, type,alert_message) VALUES (15,'parcare','Status','Senzorii de faruri au probleme');
 insert into sensor (sensor_id, name, type,alert_message) VALUES (16,'km','Number','Meh?!?');
 
-insert into car(car_id,active, deviceuuid, name, user_id) VALUES (1,TRUE ,'384e83d526570a43' ,'lucian',3);
+insert into car(car_id,active, deviceuuid, name, user_id) VALUES (1,TRUE ,'5d2d51c7c5d5ea74' ,'lucian',3);
 
 INSERT INTO car(
   car_id, created_date, last_modified_date, active, deviceuuid,
