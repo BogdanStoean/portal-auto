@@ -65,7 +65,7 @@ VALUES (14,1,15,'ALERT');
 insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
 VALUES (15,1,16,'150000');
 
-insert into document (document_id, activation_date, expiration_date, name,user_id) VALUES (1,now(),now(),'vigneta',3);
+insert into document (document_id, activation_date, expiration_date, name, car_id) VALUES (1,now(),now(),'vigneta',3);
 
 
 ALTER SEQUENCE user_id_seq RESTART WITH 100;
