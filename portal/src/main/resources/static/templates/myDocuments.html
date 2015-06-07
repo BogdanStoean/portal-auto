@@ -5,6 +5,7 @@
         <th>Name</th>
         <th>Activation Date</th>
         <th>Creation Date</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -12,6 +13,9 @@
         <td>{{document.name}}</td>
         <td>{{document.activationDate | date:'dd-MM-yyyy'}}</td>
         <td>{{document.expirationDate | date:'dd-MM-yyyy'}}</td>
+        <td>
+            <a ng-click="editToggleModal(document.id)" title="Edit"><i class="fa fa-edit"></i></a>
+        </td>
     </tr>
     </tbody>
 </table>
@@ -22,18 +26,16 @@
 
     <form name="formAddDocument" ng-submit="submitDocument()" accept-charset="utf-8" class="form" role="form"
           novalidate>
-        <div class="col-md-7">
-            <div class="form-group"
-                 ng-class="{'has-error' : formAddDocument.name.$invalid && (formAddDocument.name.$dirty || showValidation)}">
-                <label for="name">Document name</label>
-                <input type="text" class="form-control input-lg" id="name" placeholder="Enter document name"
-                       ng-model="document.name"/>
-            </div>
-
-            <button type="submit" class="btn btn-default btn-primary">Submit</button>
+        <div class="form-group"
+             ng-class="{'has-error' : formAddDocument.name.$invalid && (formAddDocument.name.$dirty || showValidation)}">
+            <label for="name">Document name</label>
+            <input type="text" class="form-control input-lg" id="name" placeholder="Enter document name"
+                   ng-model="document.name"/>
         </div>
-        <datepicker class="col-md-5 well well-sm" ng-model="document.activationDate" show-weeks="true"></datepicker>
 
+        <datepicker class="col-md-5 well well-sm" ng-model="document.activationDate" show-weeks="true"></datepicker>
+        <datepicker class="col-md-5 well well-sm" ng-model="document.expirationDate" show-weeks="true"></datepicker>
+        <button type="submit" class="btn btn-default btn-primary">Submit</button>
 
     </form>
 </modal-dialog>
@@ -49,6 +51,9 @@
             <input type="text" class="form-control input-lg" id="nameEdit" placeholder="Enter document name"
                    ng-model="document.name"/>
         </div>
+
+        <datepicker class="col-md-5 well well-sm" ng-model="document.activationDate" show-weeks="true"></datepicker>
+        <datepicker class="col-md-5 well well-sm" ng-model="document.expirationDate" show-weeks="true"></datepicker>
 
         <button type="submit" class="btn btn-default btn-primary">Submit</button>
     </form>
