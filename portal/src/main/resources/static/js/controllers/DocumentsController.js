@@ -32,8 +32,27 @@ angular.module('portal_app')
         $scope.editToggleModal = function (documentId) {
             $http.get('/documents/' + documentId).success(function (response) {
                 $scope.document = response;
+                $scope.editToggleModalShown = !$scope.editToggleModalShown;
             });
         };
+
+        $scope.submitEditDocument = function () {
+
+            $http.post('/documents/editDocuments', $scope.document).
+                success(function (data, status, headers, config) {
+                    for (var i=0; i<$scope.documents.length; i++){
+                        if($scope.documents[i].id == data.id){
+                            $scope.documents[i] = data;
+                            break;
+                        }
+                    }
+
+                    $scope.editToggleModalShown = !$scope.editToggleModalShown;
+                }).
+                error(function (data, status, headers, config) {
+                    console.log(data);
+                });
+        }
 
 
         $scope.openDatePicker = function ($event) {

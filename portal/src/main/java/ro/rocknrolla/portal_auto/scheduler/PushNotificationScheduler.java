@@ -46,7 +46,7 @@ public class PushNotificationScheduler {
     }
 
 
-    @Scheduled(fixedRate = 20000)
+    @Scheduled(fixedRate = 300000)
     public void pushNotifications() {
 
         LOGGER.info("Analyzing latest car information ...");
