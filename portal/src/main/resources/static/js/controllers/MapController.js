@@ -17,7 +17,7 @@ angular.module("portal_app")
         $scope.messageValueCheck = true;
 
         $scope.testRouteForCar = function() {
-            $http.post('/statistics/check', {carId: $scope.car.id, distance: $scope.gmap.totalKm}).
+            $http.post('/statistics/check', {carId: $routeParams.carId, distance: $scope.gmap.totalKm}).
                 success(function (data, status, headers, config) {
                     if(data.status == 'OK'){
                         $scope.alertSuccessValueCheck = false;

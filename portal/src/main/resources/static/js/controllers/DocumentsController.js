@@ -9,7 +9,7 @@ angular.module('portal_app')
         $http.get('/cars/'+$scope.carId).success(function (response) {
             $scope.car =  response;
 
-            $http.get('/documents/'+$scope.carId).success(function (response) {
+            $http.get('/documents/car/'+$scope.carId).success(function (response) {
                 $scope.documents = response;
             });
         });
@@ -44,7 +44,7 @@ angular.module('portal_app')
 
         $scope.submitEditDocument = function () {
 
-            $http.post('/documents/editDocuments', $scope.document).
+            $http.post('/documents/create', $scope.document).
                 success(function (data, status, headers, config) {
                     for (var i=0; i<$scope.documents.length; i++){
                         if($scope.documents[i].id == data.id){
@@ -67,7 +67,7 @@ angular.module('portal_app')
         };
 
 
-        $scope.date = '2000-03-12'
+        $scope.date = '2000-03-12';
 
     }]);
 
