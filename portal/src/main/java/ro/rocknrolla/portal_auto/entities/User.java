@@ -73,4 +73,12 @@ public class User extends AbstractEntity<User> {
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
 }
