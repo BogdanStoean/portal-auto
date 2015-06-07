@@ -10,6 +10,10 @@ angular.module("portal_app")
         $http.get('/cars/'+$routeParams.carId).success(function (response) {
             $scope.car =  response;
         });
+
+        $scope.checkRouteForCar = function(){
+           alert('aijdioajdoik');
+        };
     }])
     .directive('gmap', function ($window,$parse) {
         var counter = 0,

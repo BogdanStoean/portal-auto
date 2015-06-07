@@ -1,4 +1,18 @@
-<h1>My Cars</h1>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-car fa-2x"></i><h2>My cars</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -53,7 +67,7 @@
 
     <form name="formEditCar"  ng-submit="submitEditCar()" accept-charset="utf-8" class="form" role="form" novalidate>
         <div class="form-group"
-             ng-class="{'has-error' : formAddCar.name.$invalid && (formAddCar.name.$dirty || showValidation)}">
+             ng-class="{'has-error' : formEditCar.name.$invalid && (formEditCar.name.$dirty || showValidation)}">
             <label for="nameEdit">Car name</label>
             <input type="text" class="form-control input-lg" id="nameEdit" placeholder="Enter car name"
                    ng-model="car.name"/>
