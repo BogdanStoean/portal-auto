@@ -20,9 +20,9 @@ public class DocumentsController {
     @Autowired
     private DocumentsRepository documentsRepository;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<DocumentModel> getDocumentsList() {
-        List<Document> all = documentsRepository.findAll();
+    @RequestMapping(method = RequestMethod.GET, value="/{carId}")
+    public List<DocumentModel> getDocumentsList(@PathVariable("carId") Long carId) {
+        List<Document> all = documentsRepository.findByCarId(carId);
         List<DocumentModel> dn = new ArrayList<>();
         for (Document d : all) {
             dn.add(new DocumentModel(d));

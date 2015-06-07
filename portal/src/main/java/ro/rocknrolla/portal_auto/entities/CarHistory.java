@@ -21,6 +21,8 @@ public class CarHistory extends AbstractEntity<User> {
 
     private String value;
 
+    private String operationIdentifier;
+
     public Long getId() {
         return id;
     }
@@ -51,5 +53,13 @@ public class CarHistory extends AbstractEntity<User> {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public String getOperationIdentifier() {
+        return operationIdentifier;
+    }
+
+    public void setOperationIdentifier(String operationIdentifier) {
+        this.operationIdentifier = operationIdentifier;
     }
 }

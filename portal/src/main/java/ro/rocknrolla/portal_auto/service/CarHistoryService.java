@@ -12,6 +12,7 @@ import ro.rocknrolla.portal_auto.repositories.CarRepository;
 import ro.rocknrolla.portal_auto.repositories.SensorRepository;
 
 import javax.transaction.Transactional;
+import java.util.UUID;
 
 
 @Service
@@ -29,17 +30,18 @@ public class CarHistoryService {
 
     public void persistCarHistory(CarParametersDTO carParameters) {
         Car car = carRepository.findByDeviceUUIDAndActive(carParameters.getDeviceId(), true);
-        for(SensorDTO sensorDTO: carParameters.getSensors()){
+        String operationIdentifier = UUID.randomUUID().toString();
+        for (SensorDTO sensorDTO : carParameters.getSensors()) {
             Sensor byName = sensorRepository.findByName(sensorDTO.getName());
-            if(byName == null){
+            if (byName == null) {
                 continue;
             }
             CarHistory carHistory = new CarHistory();
             carHistory.setSensor(byName);
             carHistory.setCar(car);
             carHistory.setValue(sensorDTO.getValue());
+            carHistory.setOperationIdentifier(operationIdentifier);
             carHistoryRepository.save(carHistory);
         }
-
     }
 }
