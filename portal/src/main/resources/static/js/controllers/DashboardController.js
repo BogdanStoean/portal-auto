@@ -17,8 +17,8 @@ angular.module("portal_app")
         $http.get('carFleet/myFleet').success(function (response) {
             $scope.myCars = response;
 
-            for(c in response.carFleet) {
-                for(s in c.sensorStatusDTOs) {
+            for( var c in response.carFleet) {
+                for( var s in c.sensorStatusDTOs) {
                     if(s.status.toLowerCase() === "alert")
                         $scope.alerts.push({name: c.name, sensor: s.name});
                     if(s.status.toLowerCase() === "verificare")
