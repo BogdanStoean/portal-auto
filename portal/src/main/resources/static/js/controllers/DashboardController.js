@@ -4,7 +4,7 @@ angular.module("portal_app")
         $scope.alerts = [];
         $scope.verif = [];
 
-        $http.get('/carFleet/myFlee').success(function (response) {
+        $http.get('carFleet/myFleet').success(function (response) {
             $scope.myCars = response;
 
             $scope.alerts = response.carFleet.filter(function(e) {
