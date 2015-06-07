@@ -35,7 +35,7 @@ public class CarFleetService {
             carFleetDTO.getCarFleet().add(carStatusDTO);
         }
 
-        return null;
+        return carFleetDTO;
     }
 
     private void addSensorData(CarActualDataDTO actualDataDTO, CarStatusDTO carStatusDTO) {

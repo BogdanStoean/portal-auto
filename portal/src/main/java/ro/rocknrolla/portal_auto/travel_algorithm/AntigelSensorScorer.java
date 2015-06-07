@@ -15,6 +15,7 @@ public class AntigelSensorScorer implements SensorScoring {
     public int scoreIt(Long carId, String sensor, SensorPriority sensorPriority, Long KM) {
         double sensorPriorityPoints = sensorPriority.getPoints();
 
+
 //        carHistoryRepository.findLastSensorValuesForCar()
 
         return 0;
