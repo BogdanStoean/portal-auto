@@ -47,7 +47,7 @@ angular.module('portal_app')
                 templateUrl: '/templates/myCars.html',
                 controller: 'UserCarsController',
                 auth: true
-            }).when('/map', {
+            }).when('/map/:carId', {
                 templateUrl: '/templates/map.html',
                 controller: 'MapController',
                 auth: true

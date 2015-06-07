@@ -16,7 +16,9 @@
                 <i class="{{car.active == true ? 'fa fa-check' : 'fa fa-times'}}"></i>
             </td>
             <td>
-                <a ng-click="editToggleModal(car.carId)" title="Edit"><i class="fa fa-edit"></i></a>
+                <a ng-click="editToggleModal(car.carId)" title="Edit car"><i class="fa fa-edit"></i></a>
+                &nbsp;
+                <a href="/#/map/{{car.carId}}" title="Simulate route"><i class="fa fa-location-arrow"></i></a>
             </td>
         </tr>
     </tbody>

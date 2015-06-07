@@ -44,13 +44,12 @@ angular.module("portal_app")
                 $http.post('/cars/editSensors', {carModel: $scope.car, sensorsList: $scope.sensorsList}).
                     success(function (data, status, headers, config) {
                         console.log(data.carModel);
-                        for (var i=0; i<$scope.myCars.length; i++){
+                        for (var i=0; i < $scope.myCars.length; i++){
                             if($scope.myCars[i].id == data.carModel.id){
                                 $scope.myCars[i] = data.carModel;
                                 break;
                             }
                         }
-
                         $scope.editToggleModalShown = !$scope.editToggleModalShown;
                     }).
                     error(function (data, status, headers, config) {

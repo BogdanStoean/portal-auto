@@ -1,21 +1,147 @@
 angular.module("portal_app")
-    .controller("MapController", ["$scope", "$http", function ($scope, $http) {
+    .controller("MapController", ["$scope", "$http", "$routeParams", function ($scope, $http, $routeParams) {
+        $scope.car = {};
+        $scope.gmap = {
+            businessTitle: "Bucharest",
+            Lon: 26.102706,
+            Lat: 44.426855
+        };
 
-        var map = L.map('map');
+        $http.get('/cars/'+$routeParams.carId).success(function (response) {
+            $scope.car =  response;
+        });
+    }])
+    .directive('gmap', function ($window,$parse) {
+        var counter = 0,
+            prefix = '__ep_gmap_';
 
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        return {
+            restrict: 'A',
+            replace: false,
+            templateUrl: '/templates/directives/gmap.html',
+            link: function (scope, element, attrs, controller) {
+                var getter = $parse(attrs.gmap),
+                    setter = getter.assign;
 
-        L.Routing.control({
-            waypoints: [
-                L.latLng(57.74, 11.94),
-                L.latLng(57.6792, 11.949)
-            ],
-            geocoder: L.Control.Geocoder.nominatim(),
-            routeWhileDragging: true,
-            reverseWaypoints: true
-        }).addTo(map);
+                var model = scope.gmap;
+                model.options = ['Driving', 'Walking', 'Bicycling', 'Transit'];
+                model.selectedOption = 'Driving';
+                model.totalKm = 0;
 
-    }]);
+                setter(scope, model);
 
+                if ($window.google && $window.google.maps) {
+                    gInit();
+                } else {
+                    injectGoogle();
+                }
+
+
+                function gInit() {
+                    var Location = new google.maps.LatLng(model.Lat, model.Lon),
+                        directionsService = new google.maps.DirectionsService(),
+                        directionsDisplay = new google.maps.DirectionsRenderer({
+                            draggable: true
+                        }),
+
+                        mapOptions = {
+                            center: Location,
+                            zoom: 11,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        },
+                        map = new google.maps.Map(document.getElementById("map_canvas"),
+                            mapOptions);
+
+                    directionsDisplay.setMap(map);
+                    directionsDisplay.setPanel(document.getElementById('directions'));
+                    model.setDirections = function () {
+                        var selectedMode = model.selectedOption.toUpperCase() || 'DRIVING',
+                            from = model.fromAddress?model.fromAddress:'',
+                            to = model.streetAddress?model.streetAddress:'',
+                            request = {
+                                origin: from,
+                                destination: to,
+                                travelMode: selectedMode,
+                                provideRouteAlternatives: true,
+                                unitSystem: google.maps.UnitSystem.METRIC,
+                                optimizeWaypoints: true
+                            };
+                        if (selectedMode === 'TRANSIT') {
+                            request.transitOptions = {
+                                departureTime: new Date()
+                            };
+                        }
+
+                        directionsService.route(request, function (response, status) {
+                            if (status === google.maps.DirectionsStatus.OK) {
+                                directionsDisplay.setDirections(response);
+                            } else {
+                                if (angular.isFunction(model.showError)) {
+                                    scope.$apply(function () {
+                                        model.showError(status);
+                                    });
+                                }
+                            }
+                        });
+                    }
+
+                    // Try HTML5 geolocation
+                    if ("geolocation" in navigator) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
+                            var pos = new google.maps.LatLng(position.coords.latitude,
+                                position.coords.longitude);
+                            //map.setCenter(Location);
+                            scope.$apply(function () {
+                                model.fromAddress = pos;
+                            });
+                            model.setDirections();
+                        });
+                    }
+
+                    google.maps.event.addListener(directionsDisplay, 'directions_changed', function () {
+
+                        computeTotalDistance(directionsDisplay.directions);
+                        try {
+                            if (directionsDisplay.directions.routes[0].legs[0]) {
+
+                                scope.$apply(function () {
+                                    model.fromAddress = directionsDisplay.directions.routes[0].legs[0].start_address;
+                                });
+                            }
+                        } catch (e) { }
+                    });
+
+                    // fire it up initially
+                    model.setDirections();
+                    // watch if the mode has changed
+                    scope.$watch('gmap.selectedOption', function (newValue, oldValue) { model.setDirections(); });
+
+                    function computeTotalDistance(result) {
+                        var total = 0, i,
+                            myroute = result.routes[0];
+                        for (i = 0; i < myroute.legs.length; i++) {
+                            total += myroute.legs[i].distance.value;
+                        }
+                        total = total / 1000;
+                        scope.$apply(function () {
+                            model.totalKm = total;
+                        });
+                    }
+
+                }
+                function injectGoogle() {
+                    var cbId = prefix + ++counter;
+
+                    $window[cbId] = gInit;
+
+                    var wf = document.createElement('script');
+                    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                        '://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' + 'callback=' + cbId;
+                    wf.type = 'text/javascript';
+                    wf.async = 'true';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(wf, s);
+                };
+            }
+        }
+    });
