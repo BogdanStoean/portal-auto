@@ -3,16 +3,14 @@
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		<form name="signupForm" ng-submit="signup()" accept-charset="utf-8" class="form" role="form" novalidate>
-			<legend>Sign Up</legend>
-
 			<div class="row">
-				<div class="col-xs-6 col-md-6" ng-class="{'has-error' : signupForm.firstName.$invalid && (signupForm.firstName.$dirty || showValidation)}">
+				<div class="form-group" ng-class="{'has-error' : signupForm.firstName.$invalid && (signupForm.firstName.$dirty || showValidation)}">
 					<label for="firstName" class="control-label">First Name*</label>
 					<input type="text" id="firstName" class="form-control input-lg" name="firstName"
 						   ng-model="user.firstName" placeholder="First Name" required/>
 					<p ng-show="signupForm.firstName.$error.required && (signupForm.firstName.$dirty || showValidation)" class="help-block">First Name is required.</p>
 				</div>
-				<div class="col-xs-6 col-md-6" ng-class="{'has-error' : signupForm.lastName.$invalid && (signupForm.lastName.$dirty || showValidation)}">
+				<div class="form-group" ng-class="{'has-error' : signupForm.lastName.$invalid && (signupForm.lastName.$dirty || showValidation)}">
 					<label class="control-label">Last Name*</label>
 					<input type="text" class="form-control input-lg" name="lastName" ng-model="user.lastName" placeholder="Last Name" required/>
 					<p ng-show="signupForm.lastName.$error.required && (signupForm.lastName.$dirty || showValidation)" class="help-block">Last Name is required.</p>
@@ -49,11 +47,13 @@
 
 					<p ng-show="signupForm.confirmPassword.$error.match && (signupForm.confirmPassword.$dirty || showValidation)" class="help-block">Passwords do not match.</p>
 				</div>
+
+				<button class="btn btn-md btn-primary btn-block" type="submit">
+					Create my account
+				</button>
 			</div>
 
-			<button class="btn btn-md btn-primary btn-block" type="submit">
-				Create my account
-			</button>
+
 		</form>
 	</div>
 </div>
