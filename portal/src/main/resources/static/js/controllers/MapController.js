@@ -11,9 +11,10 @@ angular.module("portal_app")
             $scope.car =  response;
         });
 
-        $scope.checkRouteForCar = function(){
-           alert('aijdioajdoik');
+        $scope.testRouteForCar = function() {
+            debugger;
         };
+
     }])
     .directive('gmap', function ($window,$parse) {
         var counter = 0,
