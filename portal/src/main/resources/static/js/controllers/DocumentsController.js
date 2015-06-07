@@ -67,7 +67,7 @@ angular.module('portal_app')
         };
 
 
-        $scope.date = '2000-03-12'
+        $scope.date = '2000-03-12';
 
     }]);
 

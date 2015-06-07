@@ -34,4 +34,12 @@ public class DocumentsController {
     }
 
 
+    public Document getDocumentEntity(DocumentModel documentModel) {
+        Document document = new Document();
+        document.setId(documentModel.getId());
+        document.setName(documentModel.getName());
+        document.setActivationDate(documentModel.getActivationDate());
+        document.setExpirationDate(documentModel.getExpirationDate());
+        return document;
+    }
 }
