@@ -6,11 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.rocknrolla.portal_auto.controller.bean.DocumentModel;
 import ro.rocknrolla.portal_auto.entities.Document;
-import ro.rocknrolla.portal_auto.repositories.DocumentsRepository;
+import ro.rocknrolla.portal_auto.service.DocumentService;
 
 import javax.validation.Valid;
-import java.beans.Transient;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,41 +16,22 @@ import java.util.List;
 public class DocumentsController {
 
     @Autowired
-    private DocumentsRepository documentsRepository;
+    private DocumentService documentService;
 
-    @RequestMapping(method = RequestMethod.GET, value="/{carId}")
+    @RequestMapping(method = RequestMethod.GET, value = "/car/{carId}")
     public List<DocumentModel> getDocumentsList(@PathVariable("carId") Long carId) {
-        List<Document> all = documentsRepository.findByCarId(carId);
-        List<DocumentModel> dn = new ArrayList<>();
-        for (Document d : all) {
-            dn.add(new DocumentModel(d));
-        }
-        return dn;
+        return documentService.getDocumentsListByCar(carId);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/create")
     public ResponseEntity<DocumentModel> create(@RequestBody @Valid DocumentModel documentModel) {
-        Document save = documentsRepository.save(getDocumentEntity(documentModel));
-        return new ResponseEntity<>(new DocumentModel(save), HttpStatus.CREATED);
+        return new ResponseEntity<>(documentService.create(documentModel), documentModel.getId() != null ? HttpStatus.OK : HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/{documentId}", method = RequestMethod.GET)
-    public DocumentModel getCarById(@PathVariable("documentId") Long documentId) {
-        return new DocumentModel(documentsRepository.getOne(documentId));
+    public DocumentModel getDocumentById(@PathVariable("documentId") Long documentId) {
+        return documentService.getById(documentId);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/editDocuments")
-    public ResponseEntity<DocumentModel> editSensors(@RequestBody @Valid DocumentModel documentModel) {
-        Document save = documentsRepository.save(getDocumentEntity(documentModel));
-        return new ResponseEntity<>(new DocumentModel(save), HttpStatus.OK);
-    }
 
-    public Document getDocumentEntity(DocumentModel documentModel) {
-        Document document = new Document();
-        document.setId(documentModel.getId());
-        document.setName(documentModel.getName());
-        document.setActivationDate(documentModel.getActivationDate());
-        document.setExpirationDate(documentModel.getExpirationDate());
-        return document;
-    }
 }

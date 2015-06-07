@@ -2,10 +2,10 @@ package ro.rocknrolla.portal_auto.controller.bean;
 
 import ro.rocknrolla.portal_auto.entities.Document;
 
-import java.beans.Transient;
+import java.io.Serializable;
 import java.util.Date;
 
-public class DocumentModel {
+public class DocumentModel implements Serializable {
 
     private Long id;
     private String name;
@@ -57,5 +57,11 @@ public class DocumentModel {
         this.expirationDate = expirationDate;
     }
 
+    public Long getCarId() {
+        return carId;
+    }
 
+    public void setCarId(Long carId) {
+        this.carId = carId;
+    }
 }
