@@ -4,15 +4,33 @@ angular.module("portal_app")
         $scope.gmap = {
             businessTitle: "Bucharest",
             Lon: 26.102706,
-            Lat: 44.426855
+            Lat: 44.426855,
+            totalKm: 0
         };
 
         $http.get('/cars/'+$routeParams.carId).success(function (response) {
             $scope.car =  response;
         });
 
+        $scope.alertDangerValueCheck = true;
+        $scope.alertSuccessValueCheck = true;
+        $scope.messageValueCheck = true;
+
         $scope.testRouteForCar = function() {
-            debugger;
+            $http.post('/statistics/check', {carId: $scope.car.id, distance: $scope.gmap.totalKm}).
+                success(function (data, status, headers, config) {
+                    if(data.status == 'OK'){
+                        $scope.alertSuccessValueCheck = false;
+                        $scope.alertDangerValueCheck = true;
+                    }else{
+                        $scope.alertSuccessValueCheck = true;
+                        $scope.alertDangerValueCheck = false;
+                    }
+                    $scope.messageValueCheck = data.message;
+                }).
+                error(function (data, status, headers, config) {
+                    console.log(data);
+                });
         };
 
     }])
