@@ -7,21 +7,14 @@ angular.module("portal_app")
         $http.get('carFleet/myFleet').success(function (response) {
             $scope.myCars = response;
 
-            $scope.alerts = response.carFleet.filter(function(e) {
-                return e.map(function(m) {
-                    return m.status.toLowerCase();
-                }).filter(function (f) {
-                    return f == "alert"
-                }).length > 0
-            });
-
-            $scope.alerts = response.carFleet.filter(function(e) {
-                return e.map(function(m) {
-                        return m.status.toLowerCase();
-                    }).filter(function (f) {
-                        return f == "verificare"
-                    }).length > 0
-            });
+            for(c in response.carFleet) {
+                for(s in c.sensorStatusDTOs) {
+                    if(s.status.toLowerCase() === "alert")
+                        $scope.alerts.push({name: c.name, sensor: s.name});
+                    if(s.status.toLowerCase() === "verificare")
+                        $scope.verif.push({name: c.name, sensor: s.name});
+                }
+            }
 
         });
 
