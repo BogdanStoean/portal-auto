@@ -1,5 +1,8 @@
 package ro.rocknrolla.android.smartcar.simulator;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,13 +10,12 @@ import java.util.List;
 import ro.rocknrolla.common.SensorDTO;
 
 public class SensorsSimulator {
+    private int km = 0;
     private static SensorsSimulator instance = null;
     private final List<String> percentSensors = Arrays.asList(
             "ulei",
             "apa de parbriz!",
             "antigel",
-            "placute frane",
-            "disc frana",
             "carburant",
             "cauciucuri uzura",
             "gradul de uzura la bateriei"
@@ -24,12 +26,15 @@ public class SensorsSimulator {
             "motor",
             "servo directie",
             "senzori ploaie",
+            "placute frane",
+            "disc frana",
             "pozitie",
             "faruri",
             "parcare"
     );
 
     protected SensorsSimulator() {
+        km = km + getRandomInteger(100,10);
     }
     public static SensorsSimulator getInstance() {
         if(instance == null) {
@@ -39,6 +44,7 @@ public class SensorsSimulator {
     }
 
     public List<SensorDTO> getSensors() {
+        km = km + getRandomInteger(10,1);
         List<SensorDTO> result = new ArrayList<>();
         SensorDTO s;
         //percent sensors
@@ -55,6 +61,10 @@ public class SensorsSimulator {
             s.setValue(statusSensors.get(getRandomInteger(statusSensors.size() - 1, 0)));
             result.add(s);
         }
+        s = new SensorDTO();
+        s.setName("km");
+        s.setValue(""+km);
+        result.add(s);
 
         return result;
     }
