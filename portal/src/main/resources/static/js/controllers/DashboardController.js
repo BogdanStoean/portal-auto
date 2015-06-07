@@ -4,6 +4,16 @@ angular.module("portal_app")
         $scope.alerts = [];
         $scope.verif = [];
 
+        $scope.detailPanelTitle = 'Alert details';
+        $scope.showPabelDetails = false;
+        $scope.itemList = [{
+            name: 'car 1',
+            message: "error 1"
+        }, {
+            name: 'car 1',
+            message: "error 2"
+        }]
+
         $http.get('carFleet/myFleet').success(function (response) {
             $scope.myCars = response;
 

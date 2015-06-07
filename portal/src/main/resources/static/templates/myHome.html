@@ -69,6 +69,29 @@
             </a>
         </div>
     </div>
+
+    <div class="col-md-12">
+
+        <div class="panel panel-danger" ng-show="showPabelDetails">
+            <div class="panel-heading">{{detailPanelTitle}}</div>
+            <br>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Car name</th>
+                    <th>Message</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in itemList">
+                    <td>{{item.name}}</td>
+                    <td>{{item.message}}</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
 </div>
         </div>
     </div>
+
