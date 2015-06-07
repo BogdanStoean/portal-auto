@@ -1,28 +1,28 @@
 angular.module("portal_app")
-    .controller("DashboardController", ["$scope","$http", function ($scope, $http) {
+    .controller("DashboardController", ["$scope", "$http", function ($scope, $http) {
         $scope.myCars = [];
         $scope.alerts = [];
         $scope.verif = [];
+        $scope.showList = false;
 
         $scope.detailPanelTitle = 'Alert details';
-        $scope.showPabelDetails = false;
-        $scope.itemList = [{
-            name: 'car 1',
-            message: "error 1"
-        }, {
-            name: 'car 1',
-            message: "error 2"
-        }]
 
         $http.get('carFleet/myFleet').success(function (response) {
             $scope.myCars = response;
+            var carFleet = response.carFleet;
 
-            for( var c in response.carFleet) {
-                for( var s in c.sensorStatusDTOs) {
-                    if(s.status.toLowerCase() === "alert")
-                        $scope.alerts.push({name: c.name, sensor: s.name});
-                    if(s.status.toLowerCase() === "verificare")
-                        $scope.verif.push({name: c.name, sensor: s.name});
+            if (carFleet && carFleet.length > 0) {
+                for (var i = 0; i < carFleet.length; i++) {
+                    var arr = carFleet[i].sensorStatusDTOs;
+                    if (arr && arr.length > 0) {
+                        for (var j = 0; j < arr.length; j++) {
+                            if (arr[j].status.toLowerCase() === "alert") {
+                                $scope.alerts.push({name: carFleet[i].name, message: arr[j].name});
+                            } else if (arr[j].status.toLowerCase() === "verificare") {
+                                $scope.verif.push({name: carFleet[i].name, message: arr[j].name});
+                            }
+                        }
+                    }
                 }
             }
 

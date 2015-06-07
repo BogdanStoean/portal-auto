@@ -33,12 +33,12 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge">{{verif.length}}</div>
-                        <div>Critical!</div>
+                        <div>Warning!</div>
                     </div>
                 </div>
             </div>
-            <a href="#">
-                <div class="panel-footer">
+            <a ng-click="showList=verif;detailPanelTitle='Warning details'">
+                <div class="panel-footer" >
                     <span class="pull-left">View Details</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
@@ -60,8 +60,8 @@
                     </div>
                 </div>
             </div>
-            <a href="#">
-                <div class="panel-footer">
+            <a ng-click="showList=alerts;detailPanelTitle='Alert details'">
+                <div class="panel-footer" >
                     <span class="pull-left">View Details</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
@@ -72,7 +72,7 @@
 
     <div class="col-md-12">
 
-        <div class="panel panel-danger" ng-show="showPabelDetails">
+        <div class="panel panel-danger" ng-show="showList">
             <div class="panel-heading">{{detailPanelTitle}}</div>
             <br>
             <table class="table table-striped">
@@ -83,7 +83,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="item in itemList">
+                <tr ng-repeat="item in showList">
                     <td>{{item.name}}</td>
                     <td>{{item.message}}</td>
                 </tr>
