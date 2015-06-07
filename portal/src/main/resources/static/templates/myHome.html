@@ -1,7 +1,5 @@
 <div class="starter-template">
     <div class="container">
-<h1>My Home</h1>
-
 <div class="row">
     <div class="col-md-4">
         <div class="panel panel-green">
@@ -11,7 +9,7 @@
                         <i class="fa fa-car fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">{{myCars.length}}</div>
+                        <div class="huge">{{myCars.carFleet.length}}</div>
                         <div>Total Cars</div>
                     </div>
                 </div>
@@ -34,7 +32,7 @@
                         <i class="fa fa-support fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">13</div>
+                        <div class="huge">{{verif.length}}</div>
                         <div>Critical!</div>
                     </div>
                 </div>
@@ -54,10 +52,10 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-support fa-5x"></i>
+                        <i class="fa fa-exclamation-triangle fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">13</div>
+                        <div class="huge">{{alerts.length}}</div>
                         <div>Critical!</div>
                     </div>
                 </div>
