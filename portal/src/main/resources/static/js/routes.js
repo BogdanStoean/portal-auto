@@ -42,6 +42,7 @@ angular.module('portal_app')
         $routeProvider
             .when('/myHome', {
                 templateUrl: '/templates/myHome.html',
+                controller: 'DashboardController',
                 auth: true
             }).when('/myCars', {
                 templateUrl: '/templates/myCars.html',
