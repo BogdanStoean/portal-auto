@@ -1,5 +1,5 @@
 angular.module('portal_app', ['ngRoute', 'ngMessages', 'ngResource', 'validation.match','ui.bootstrap'])
-    app.run(function ($rootScope, $location, $http) {
+    .run(function ($rootScope, $location, $http) {
         $http.get('/user').success(function (data) {
             $rootScope.authenticated = true;
             $rootScope.user = data;
