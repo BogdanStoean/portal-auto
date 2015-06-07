@@ -20,7 +20,7 @@
 <div gmap="gmap"></div>
 <nav class="navbar navbar-default" style="margin-top: 20px;">
     <div class="container-fluid" style="padding-top: 7px;">
-        <form name="checkRouteForCar"  ng-submit="checkRouteForCar()" accept-charset="utf-8" class="navbar-form navbar-left"  role="form" novalidate>
+        <form name="checkRouteForCar" ng-submit="testRouteForCar()" accept-charset="utf-8" class="navbar-form navbar-left"  role="form" novalidate>
             <div class="form-group">
                 <input type="hidden" class="form-control input-lg" ng-model="car.id"/>
             </div>
@@ -30,7 +30,7 @@
                 <input type="text" class="form-control input-lg" id="totalKm" placeholder="Enter device UUID"
                        ng-model="gmap.totalKm"/>
             </div>
-            <button type="submit" class="btn btn-default btn-primary">Check Car</button>
+            <button class="btn btn-default btn-primary">Check Car</button>
         </form>
     </div>
 </nav>

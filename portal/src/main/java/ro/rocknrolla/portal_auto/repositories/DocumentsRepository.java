@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface DocumentsRepository extends JpaRepository<Document, Long> {
 
-
+    List<Document> findByCarId(Long carId);
 }
