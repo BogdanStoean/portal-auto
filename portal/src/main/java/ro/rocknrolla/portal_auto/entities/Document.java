@@ -13,9 +13,9 @@ public class Document extends AbstractEntity<User> {
     @SequenceGenerator(name = "DOCUMENT_SEQ_GEN", sequenceName = "DOCUMENT_ID_SEQ", allocationSize = 1)
     private Long id;
 
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "car_id")
     @ManyToOne
-    private User user;
+    private Car car;
 
     private String name;
     private Date activationDate;
@@ -51,5 +51,13 @@ public class Document extends AbstractEntity<User> {
 
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 }

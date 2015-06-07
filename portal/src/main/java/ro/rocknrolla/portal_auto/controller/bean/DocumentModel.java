@@ -12,6 +12,8 @@ public class DocumentModel {
     private Date activationDate;
     private Date expirationDate;
 
+    private Long carId;
+
     public DocumentModel() {
     }
 
@@ -20,6 +22,7 @@ public class DocumentModel {
         this.name = document.getName();
         this.activationDate = document.getActivationDate();
         this.expirationDate = document.getExpirationDate();
+        this.carId = document.getCar().getId();
     }
 
     public Long getId() {

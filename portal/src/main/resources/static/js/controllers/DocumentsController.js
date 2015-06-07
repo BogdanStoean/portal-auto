@@ -1,11 +1,17 @@
 angular.module('portal_app')
-    .controller("DocumentsController", ["$scope", "$http", function ($scope, $http) {
+    .controller("DocumentsController", ["$scope", "$http", "$routeParams", function ($scope, $http, $routeParams) {
         $scope.documents = [];
         $scope.document = {};
         $scope.opened=false;
+        $scope.carId = $routeParams.carId;
+        $scope.car= {};
 
-        $http.get('/documents').success(function (response) {
-            $scope.documents = response;
+        $http.get('/cars/'+$scope.carId).success(function (response) {
+            $scope.car =  response;
+
+            $http.get('/documents/'+$scope.carId).success(function (response) {
+                $scope.documents = response;
+            });
         });
 
         $scope.modalShown = false;
@@ -14,7 +20,7 @@ angular.module('portal_app')
             $scope.document = {};
             $scope.submitDocument = function () {
                 console.log($scope.document);
-
+                $scope.document.carId = $scope.carId;
                 $http.post('/documents/create', $scope.document).
                     success(function (data, status, headers, config) {
                         console.log(data);

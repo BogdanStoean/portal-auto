@@ -52,7 +52,7 @@ angular.module('portal_app')
                 templateUrl: '/templates/map.html',
                 controller: 'MapController',
                 auth: true
-            }).when('/myDocuments', {
+            }).when('/carDocuments/:carId', {
                 templateUrl: '/templates/myDocuments.html',
                 controller: 'DocumentsController',
                 auth: true
