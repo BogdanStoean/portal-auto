@@ -1,8 +1,7 @@
 <div id="navbar" class="collapse navbar-collapse">
-	<ul class="nav navbar-nav">
-		<nav-bar-item name="/home" description="Home" ng-show="!authenticated"></nav-bar-item>
-		<nav-bar-item name="/signup" description="Sign Up" ng-show="!authenticated"></nav-bar-item>
+	<ul class="nav navbar-nav" ng-class="{'navbar-right' : authenticated == false}">
 		<nav-bar-item name="/login" description="Login" ng-show="!authenticated"></nav-bar-item>
+		<nav-bar-item name="/signup" description="Sign Up" ng-show="!authenticated"></nav-bar-item>
 
 		<nav-bar-item name="/myHome" description="My Home" ng-show="authenticated"></nav-bar-item>
 		<nav-bar-item name="/myCars" description="My Cars" ng-show="authenticated"></nav-bar-item>
