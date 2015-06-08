@@ -19,6 +19,7 @@ public class CarFleetService {
     @Autowired
     private CarActualDataService carActualDataService;
 
+
     @Autowired
     private CarRepository carRepository;
 
