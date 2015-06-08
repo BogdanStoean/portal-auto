@@ -8,6 +8,7 @@ import java.util.List;
 public interface CarRepository extends JpaRepository<Car, Long> {
     Car findByDeviceUUIDAndActive(String deviceUUID, boolean active);
 
+    List<Car> findByUserEmailAndActiveTrue(String email);
     List<Car> findByUserEmail(String email);
 
     List<Car> findByActiveTrue();

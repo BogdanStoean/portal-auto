@@ -30,7 +30,7 @@ public class CarRouteCheckerService {
     private DefaultSensorScorer defaultSensorScorer;
 
     public ResponseModel check(CarRouteModel carRouteModel) {
-        List<CarHistory> records = carHistoryRepository.findRecordsByCarIdAndSensorIdGroupedByOPIdentifier(1l, 16l);
+        List<CarHistory> records = carHistoryRepository.findRecordsByCarIdAndSensorIdGroupedByOPIdentifier(carRouteModel.getCarId(), 16l);
         Double tripDistance = carRouteModel.getDistance();
         int previousKM = 0;
         int currentKM = 0;

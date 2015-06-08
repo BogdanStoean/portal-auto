@@ -23,7 +23,7 @@ public class CarFleetService {
     private CarRepository carRepository;
 
     public CarFleetDTO getAuthenticatedUserFleet() {
-        List<Car> userCars = carRepository.findByUserEmail(CurrentAuthenticatedUser.getUsername());
+        List<Car> userCars = carRepository.findByUserEmailAndActiveTrue(CurrentAuthenticatedUser.getUsername());
         CarFleetDTO carFleetDTO = new CarFleetDTO();
         for (Car car : userCars) {
             CarActualDataDTO actualDataDTO = carActualDataService.getIt(car.getDeviceUUID());

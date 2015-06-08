@@ -18,20 +18,23 @@ insert into sensor (sensor_id, name, type,alert_message) VALUES (12,'senzori plo
 insert into sensor (sensor_id, name, type,alert_message) VALUES (13,'pozitie','Status','Senzorii de positie au probleme');
 insert into sensor (sensor_id, name, type,alert_message) VALUES (14,'faruri','Status','Senzorii de faruri au probleme');
 insert into sensor (sensor_id, name, type,alert_message) VALUES (15,'parcare','Status','Senzorii de faruri au probleme');
-insert into sensor (sensor_id, name, type,alert_message) VALUES (16,'km','Number','Meh?!?');
+insert into sensor (sensor_id, name, type,alert_message) VALUES (16,'km','Number','Urmeaza sa schimbi distributia');
 
 insert into car(car_id,active, deviceuuid, name, user_id) VALUES (1,TRUE ,'5d2d51c7c5d5ea74' ,'lucian',3);
+insert into car(car_id,active, deviceuuid, name, user_id) VALUES (4,TRUE ,'97635f372cdb764c' ,'virgil',3);
+insert into car(car_id,active, deviceuuid, name, user_id) VALUES (5,TRUE ,'384e83d526570a43' ,'tableta',3);
+insert into car(car_id,active, deviceuuid, name, user_id) VALUES (6,TRUE ,'ddbc3f555eb0b877' ,'bogdan',3);
 
 INSERT INTO car(
   car_id, created_date, last_modified_date, active, deviceuuid,
   name, user_id)
-VALUES (2, now(), now(), true, 'parse_384e83d526570a43',
+VALUES (2, now(), now(), FALSE , 'parse_384e83d526570a43',
         'Ford Fiesta', 3);
 
 INSERT INTO car(
   car_id, created_date, last_modified_date, active, deviceuuid,
   name, user_id)
-VALUES (3, now(), now(), true, '1126',
+VALUES (3, now(), now(), FALSE , '1126',
         'Ford KA', 3);
 
 insert into car_sensor_critical_value (car_sensor_critical_value_id,car_car_id,sensor_sensor_id,value)
